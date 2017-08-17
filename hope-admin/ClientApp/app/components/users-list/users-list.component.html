@@ -1,0 +1,405 @@
+
+
+<div class="animated fadeIn pad__top-middle dashboard-wrap vh90">
+
+
+    <div class="dashboard-header">
+
+        <input type="button" class="btn btn-secondary item-right" value="Live" 
+        [class.console__tab-item__is-active]=" id == 'live' "
+            (click)=" setList('live') ">
+
+        <input type="button" class="btn btn-secondary item-right" value="Banned" 
+        [class.console__tab-item__is-active]=" id == 'banned' "
+            (click)=" setList('banned') ">
+
+        <input type="button" class="btn btn-secondary item-right" value="Income" 
+        [class.console__tab-item__is-active]=" id == 'income' "
+            (click)=" setList('income') ">
+
+    </div>
+
+    <div class="dashboard-search-wrap" >   
+        <input type="text" class="dashboard-search" placeholder="search" 
+        #searchInput
+        (keyup.enter)="search(searchInput.value)" 
+        (blur)="search(searchInput.value)" >
+    </div>
+
+
+    <div class=" scroll vh82" *ngIf=" id == 'live' && !isSearch ">
+
+  
+        <ngx-datatable 
+            #myTable class='material expandable' 
+            [columnMode]="'standard'" 
+            [headerHeight]="50" 
+            [footerHeight]="0" 
+            [rowHeight]="50"
+            [scrollbarV]="50" 
+            [rows]='rows'>
+
+            <ngx-datatable-column 
+            [width]="50" 
+            [resizeable]="false" 
+            [sortable]="false" 
+            [draggable]="false" 
+            [canAutoResize]="false">
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+
+                            <img src="/assets/img/wifi.png" 
+                            class="dashboard-table-body__cell-img dashboard-table-body__cell-img-small" 
+                            *ngIf=" row.live " />
+
+                </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column name="User Id" 
+            [width]="200">
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                    <div class="dashboard-table-body__cell ">
+                        {{ row?.userId }}
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Room Id" 
+            [width]="200">
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                    <div class="dashboard-table-body__cell ">
+                        {{ row?.roomId }}
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column name="Room Time" 
+            [width]="200">
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                    <div class="dashboard-table-body__cell ">
+                        {{ row?.roomTime }}
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column name="Viewers" 
+            [width]="200">
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                    <div class="dashboard-table-body__cell ">
+                        {{ row?.viewers }}
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column
+            [width]="50" 
+            [resizeable]="false" 
+            [sortable]="false" 
+            [draggable]="false" >
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+
+                <span *ngIf="row.warned" > ! </span>
+
+                </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column>
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+
+                    <button class="btn btn-secondary btn-report" 
+
+                    (click)="ban(row)"> Ban </button>
+
+
+                    <button class="btn btn-secondary btn-warn" 
+
+                    (click)="warn(row)"> Warn </button>
+
+                </ng-template>
+            </ngx-datatable-column>
+
+
+        </ngx-datatable>      
+
+
+    </div> <!-- +++ ++ ++ +++ -->
+
+
+    <div class=" scroll vh82" *ngIf=" id == 'banned' && !isSearch ">
+
+  
+        <ngx-datatable 
+            #myTable class='material expandable' 
+            [columnMode]="'standard'" 
+            [headerHeight]="50" 
+            [footerHeight]="0" 
+            [rowHeight]="50"
+            [scrollbarV]="50" 
+            [rows]='rows'>
+
+            <ngx-datatable-column 
+            [width]="50" 
+            [resizeable]="false" 
+            [sortable]="false" 
+            [draggable]="false" 
+            [canAutoResize]="false">
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+
+                </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column name="User Id" 
+            [width]="200">
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                    <div class="dashboard-table-body__cell ">
+                        {{ row?.userId }}
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+        <ngx-datatable-column name="Room Id" [width]="200" >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                <div class="dashboard-table-body__cell " >
+                {{ row?.roomId }}
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Reason" [width]="200" >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+                <div class="dashboard-table-body__cell " >
+                {{ row?.reason }} 
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Сomplainant" [width]="200" >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+                <div class="dashboard-table-body__cell " >
+                {{ row?.complainant }}
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column>
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+
+                    <button class="btn btn-secondary btn-unban" 
+
+                    (click)="unban(row)"> unban </button>
+
+                </ng-template>
+            </ngx-datatable-column>
+
+
+        </ngx-datatable>      
+
+
+    </div> <!-- +++ ++ ++ +++ -->
+
+
+    <div class=" scroll vh82" *ngIf=" id == 'income' && !isSearch ">
+
+  
+        <ngx-datatable 
+            #myTable class='material expandable' 
+            [columnMode]="'standard'" 
+            [headerHeight]="50" 
+            [footerHeight]="0" 
+            [rowHeight]="50"
+            [scrollbarV]="50" 
+            [rows]='rows'>
+
+            <ngx-datatable-column 
+            [width]="50" 
+            [resizeable]="false" 
+            [sortable]="false" 
+            [draggable]="false" 
+            [canAutoResize]="false">
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+
+                </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column name="User Id" 
+            [width]="200">
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                    <div class="dashboard-table-body__cell ">
+                        {{ row?.userId }}
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Room Id" 
+            [width]="200">
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                    <div class="dashboard-table-body__cell ">
+                        {{ row?.roomId }}
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column name="Room Time" 
+            [width]="200">
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                    <div class="dashboard-table-body__cell ">
+                        {{ row?.roomTime }}
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column name="Viewers" 
+            [width]="200">
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                    <div class="dashboard-table-body__cell ">
+                        {{ row?.viewers }}
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Income" 
+            [width]="200">
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                    <div class="dashboard-table-body__cell ">
+                        {{ row?.income }}
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column
+            [width]="50" 
+            [resizeable]="false" 
+            [sortable]="false" 
+            [draggable]="false" >
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+
+                <span *ngIf="row.warned" > ! </span>
+
+                </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column
+            [width]="300"> 
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+
+                    <button class="btn btn-secondary btn-report" 
+
+                    (click)="ban(row)"> Ban </button>
+
+
+                    <button class="btn btn-secondary btn-warn" 
+
+                    (click)="warn(row)"> Warn </button>
+
+                </ng-template>
+            </ngx-datatable-column>
+
+
+        </ngx-datatable>      
+
+
+    </div> <!-- +++ ++ ++ +++ -->
+
+
+
+
+    <div class=" scroll vh82" *ngIf=" isSearch ">
+
+  
+        <ngx-datatable 
+            #myTable class='material expandable' 
+            [columnMode]="'standard'" 
+            [headerHeight]="50" 
+            [footerHeight]="0" 
+            [rowHeight]="50"
+            [scrollbarV]="50" 
+            [rows]='rows'>
+
+            <ngx-datatable-column 
+            [width]="50" 
+            [resizeable]="false" 
+            [sortable]="false" 
+            [draggable]="false" 
+            [canAutoResize]="false">
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+
+                            <img src="/assets/img/wifi.png" 
+                            class="dashboard-table-body__cell-img dashboard-table-body__cell-img-small" 
+                            *ngIf=" row.live " />
+
+                </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column name="User Id" 
+            [width]="200">
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                    <div class="dashboard-table-body__cell ">
+                        {{ row?.userId }}
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Room Id" 
+            [width]="200">
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                    <div class="dashboard-table-body__cell ">
+                        {{ row?.roomId }}
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column name="Room Time" 
+            [width]="200">
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                    <div class="dashboard-table-body__cell ">
+                        {{ row?.roomTime }}
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column name="Viewers" 
+            [width]="200">
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                    <div class="dashboard-table-body__cell ">
+                        {{ row?.viewers }}
+                    </div>
+                </ng-template>
+            </ngx-datatable-column>
+
+
+            <ngx-datatable-column>
+                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+
+                    <button class="btn btn-secondary btn-report" 
+                    *ngIf="!row.banned" 
+                    (click)="ban(row)"> Ban </button>
+
+
+                    <button class="btn btn-secondary btn-unban" 
+                    *ngIf="row.banned" 
+                    (click)="unban(row)"> Unban </button>
+
+                </ng-template>
+            </ngx-datatable-column>
+
+
+        </ngx-datatable>      
+
+
+    </div> <!-- +++ ++ ++ +++ -->
+
+
+</div>
+

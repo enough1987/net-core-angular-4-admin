@@ -1,0 +1,324 @@
+<div class="animated fadeIn pad__top-middle dashboard-wrap flex-column">
+
+
+    <div class="purchases-header">
+
+        <input type="button" class="btn btn-secondary item-right  btn--toggle" 
+(click)="toggleAdd()" 
+[value]=" !isAdd ? 'Add new' : 'Show list' " > 
+
+        <input type="button" class="btn btn-secondary item-right btn--save" 
+        value="Save"
+*ngIf="isAdd" 
+(click)="add()" > 
+
+    </div>
+
+    <div *ngIf="!isAdd" >
+
+        <div class="purchases-wrap">
+
+            <div class="purchase" 
+                *ngFor="let resource of resources; let i = index;">
+
+                <div class="purchase__btns">
+
+                <button type="button" class="btn btn-secondary purchase-btn purchase-btn--edit" 
+                    *ngIf="!resource.editMode"
+                    (click)="setEditMode(resource)" >
+                    <svg class="icon" width="16" height="16"><use xlink:href="assets/img/sprite.svg#ico-edit" /></svg>
+                    <span>Edit</span>
+                </button>
+                <button type="button" class="btn btn-secondary purchase-btn  purchase-btn--save"
+                    *ngIf="resource.editMode" 
+                    (click)="edit(resource)" >
+                    <svg class="icon" width="16" height="16"><use xlink:href="assets/img/sprite.svg#ico-save" /></svg>
+                    <span>Save</span>
+                </button>
+                <button type="button" class="btn btn-secondary purchase-btn  purchase-btn--remove"
+                    *ngIf="resource.editMode"
+                    (click)="openRemoveModal(resource)" >
+                    <svg class="icon" width="16" height="16"><use xlink:href="assets/img/sprite.svg#ico-delete" /></svg>
+                    <span>Remove</span>
+                </button>
+
+                </div>
+                <p class="error-msg" 
+                *ngIf="resource.errors?.invalide" > 
+                    Please, fix errors 
+                </p>   
+
+
+<div class="purchase__item--icons">
+<div class="purchase__icon-wrapper  purchase__icon-wrapper--big">
+<div class="purchase__icon purchase__icon--big" >
+    <img class="purchase-img"
+    *ngIf="resource.imgUrl" 
+    [src]="resource.imgUrl" >
+</div>
+<div class="upload-file  upload-file--gift-icon"
+*ngIf="resource.editMode" >
+    <input type="file" class="upload-file-input" placeholder="Upload img..."  
+    (change)="resourcesService.fileChangeEvent($event, resource)" />
+    <label for="file-input" class="upload-file-label">
+            <svg class="icon" width="16" height="16"><use xlink:href="assets/img/sprite.svg#ico-refresh" /></svg>
+            Change
+    </label>
+</div>
+</div>
+
+<div class="purchase__icon-wrapper  purchase__icon-wrapper--small">
+<div class="purchase__icon  purchase__icon--small" >
+    <img class="purchase-img"
+    *ngIf="resource.imgBigUrl" 
+    [src]="resource.imgBigUrl" >
+</div>
+<div class="upload-file  upload-file--gift-icon" 
+*ngIf="resource.editMode" >
+    <input type="file" class="upload-file-input" placeholder="Upload big img..."  
+    (change)=" resourcesService.fileChangeEvent( $event, resource, 'imgBigUrl' ) " />
+    <label for="file-input" class="upload-file-label">
+            <svg class="icon" width="16" height="16"><use xlink:href="assets/img/sprite.svg#ico-refresh" /></svg>
+            Change
+    </label>
+</div>
+</div>
+</div> 
+
+
+                <p  class="flex item-cntr purchase__item purchase__item--id" > 
+                    <span class="item-title" > Id </span> 
+                    <span  class="item-input" 
+                    *ngIf="!resource.editMode" > 
+                    {{ resource.id }} 
+                    </span>
+                    <input type="text"  class="item-input"  
+                    *ngIf="resource.editMode"
+                    [(ngModel)]="resource.id" 
+                    [class.invalid]="resource.errors?.id"  >
+                </p>
+                <p  class="flex item-cntr purchase__item purchase__item--order" > 
+                    <span class="item-title" > Order </span> 
+                    <span  class="item-input" 
+                    *ngIf="!resource.editMode" > 
+                    {{ resource.order }} 
+                    </span>
+                    <input type="text" class="item-input" 
+                    *ngIf="resource.editMode"
+                    [(ngModel)]="resource.order" 
+                    [class.invalid]="resource.errors?.order" >
+                </p>
+                <p  class="flex item-cntr purchase__item purchase__item--value" > 
+                    <span class="item-title" > Value </span> 
+                    <span  class="item-input" 
+                    *ngIf="!resource.editMode" > 
+                    {{ resource.value }} 
+                    </span>
+                    <input type="text" class="item-input" 
+                    *ngIf="resource.editMode"
+                    [(ngModel)]="resource.value" 
+                    [class.invalid]="resource.errors?.value" >
+                </p>
+
+                <div class="flex item-cntr purchase__item  purchase__item--select"  
+                    *ngIf="resource.editMode" >
+                    <span class="item-title" > Gift type </span>
+
+                    <div class="item-select">
+                        <select  class="custom-select  purchase__select"
+                        (change)="resourcesService.setProp(resource, 'type' , select.value )"
+                        [class.invalid]="resource.errors?.type" 
+                        #select
+                        >
+                            <option value="cool"
+                            [selected]=" resource.type == 'cool' " >
+                                Cool</option>
+                            <option value="exciting"
+                            [selected]=" resource.type == 'exciting' " >
+                                Exciting</option>
+                            <option value="fabulous"
+                            [selected]=" resource.type == 'fabulous' " >
+                                Fabulous</option>
+                        </select>
+                    </div>
+<!--
+ 
+                    
+
+                    <input class="btn btn-secondary switch-item" type="button" value="Cool" 
+                    (click)="resourcesService.setProp(resource, 'type' , 'cool' )"
+                    [class.switch-active-btn]=" resource.type == 'cool' " />
+                    <input class="btn btn-secondary switch-item" type="button" value="Exciting" 
+                    (click)="resourcesService.setProp(resource, 'type' , 'exciting' )"
+                    [class.switch-active-btn]=" resource.type == 'exciting' " />
+                    <input class="btn btn-secondary switch-item" type="button" value="Fabulous" 
+                    (click)="resourcesService.setProp(resource, 'type' , 'fabulous' )"
+                    [class.switch-active-btn]=" resource.type == 'fabulous' " />
+
+ -->                  
+
+                </div>
+
+                <div class="flex item-cntr  purchase__item purchase__item--switch"  
+                    *ngIf="!resource.editMode" >
+                    <span class="item-title" > Gift type </span> 
+
+                    <div class="switch-btns">
+                    <input class="btn btn-secondary switch-item" type="button" value="Cool" 
+                    [class.switch-active-btn]=" resource.type == 'cool' " 
+                    [class.invalid]="resource.errors?.type" />
+                    <input class="btn btn-secondary switch-item" type="button" value="Exciting" 
+                    [class.switch-active-btn]=" resource.type == 'exciting' " 
+                    [class.invalid]="resource.errors?.type" />
+                    <input class="btn btn-secondary switch-item" type="button" value="Fabulous" 
+                    [class.switch-active-btn]=" resource.type == 'fabulous' " 
+                    [class.invalid]="resource.errors?.type" />
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="no-items"
+            *ngIf="!resources || !resources.length" >
+                there are no purchases
+        </div>
+
+    </div>
+
+
+
+    <div class="add-item  add-gift  flex-column"
+    *ngIf="isAdd" >
+
+        <h4>Gift Adding</h4>
+
+                <p class="error error-msg" 
+                *ngIf="newResource.errors?.invalide" > 
+                    Please, fix errors 
+                </p>
+
+
+                <p class="flex item-cntr text-field" > 
+                    <input type="text" class="item-input" placeholder=" "
+                    [class.invalid]="newResource.errors?.id"
+                    [(ngModel)]="newResource.id" >
+                    <span class="item-title  item-title--required" > ID </span> 
+                </p>
+
+                <div class="item-cntr" >
+                    <span class="item-title  item-title--required  item-title--text-field-style" 
+                    > 
+                    Upload bigger gift image </span> 
+
+<div class="add-gift__icon-wrapper  add-gift__icon-wrapper--big"
+[class.has-file]="newResource.imgUrl" >
+        <!-- class "has-file" then file uploaded-->
+
+<div class="add-gift__icon add-gift__icon--big" >
+    <img class="purchase-img"
+    *ngIf="newResource.imgUrl" 
+    [src]="newResource.imgUrl" >
+</div>
+<div class="upload-file  upload-file--gift-icon" >
+    <input type="file"  class="upload-file-input"  placeholder="Upload img..."  required
+    [class.invalid]="newResource.errors?.imgUrl" 
+    (change)="resourcesService.fileChangeEvent($event, newResource)" />
+    <label for="file-input" class="upload-file-label">
+        <span class="upload-file-label__has-file">
+            <svg class="icon" width="16" height="16"><use xlink:href="assets/img/sprite.svg#ico-refresh" /></svg>
+            Change
+        </span>
+        <span class="upload-file-label__no-file">Drop files here or click to upload</span>
+    </label>
+</div>
+</div>
+
+        </div>
+
+        <div class="item-cntr" >
+        <span class="item-title  item-title--required  item-title--text-field-style" > Upload smaller gift image </span> 
+
+<div class="add-gift__icon-wrapper  add-gift__icon-wrapper--small"
+[class.has-file]="newResource.imgBigUrl" >
+
+    <!-- class "has-file" then file uploaded-->
+
+<div class="add-gift__icon add-gift__icon--small" >
+    <img class="purchase-img"
+    *ngIf="newResource.imgBigUrl" 
+    [src]="newResource.imgBigUrl" >
+</div>
+<div class="upload-file  upload-file--gift-icon" >
+    <input type="file"  class="upload-file-input "  placeholder="Upload big img..."  required
+    [class.invalid]="newResource.errors?.imgBigUrl" 
+    (change)=" resourcesService.fileChangeEvent( $event, newResource, 'imgBigUrl' ) " />
+    <label for="file-input" class="upload-file-label">
+        <span class="upload-file-label__has-file">
+            <svg class="icon" width="16" height="16"><use xlink:href="assets/img/sprite.svg#ico-refresh" /></svg>
+            Change
+        </span>
+        <span class="upload-file-label__no-file">Drop files here or click to upload</span>
+    </label>
+</div>
+</div>
+                </div>
+ 
+                <h5>Additional Info</h5>
+
+                <div class="item-cntr" >
+
+                    <p class="item-title  item-title--text-field-style" > Choose </p>
+
+                    <input class="btn btn-secondary switch-item" type="button" value="Cool" 
+                    (click)="resourcesService.setProp(newResource, 'type' , 'cool' )"
+                    [class.switch-active-btn]=" newResource.type == 'cool' " 
+                    [class.invalid]="newResource.errors?.type" />
+                    <input class="btn btn-secondary switch-item" type="button" value="Exciting" 
+                    (click)="resourcesService.setProp(newResource, 'type' , 'exciting' )"
+                    [class.switch-active-btn]=" newResource.type == 'exciting' " 
+                    [class.invalid]="newResource.errors?.type" />
+                    <input class="btn btn-secondary switch-item" type="button" value="Fabulous" 
+                    (click)="resourcesService.setProp(newResource, 'type' , 'fabulous' )"
+                    [class.switch-active-btn]=" newResource.type == 'fabulous' " 
+                    [class.invalid]="newResource.errors?.type" />
+
+                </div>
+
+
+                <p class="flex item-cntr text-field" > 
+                    <input type="text" class="item-input" placeholder=" "
+                    [class.invalid]="newResource.errors?.order" 
+                    [(ngModel)]="newResource.order" >
+                    <span class="item-title" > Order </span> 
+                </p>
+                <p class="flex item-cntr text-field" > 
+                    <input type="text" class="item-input" placeholder=" "
+                    [class.invalid]="newResource.errors?.value" 
+                    [(ngModel)]="newResource.value" >
+                    <span class="item-title" > Value </span> 
+                </p>
+
+    </div>
+
+</div>
+
+
+<div class="modal-bg"
+[class.modal-active]="removeItem" ></div>
+
+<div class="modal-remove"
+[class.modal-active]="removeItem" >
+    <div class="modal__text">
+        <p>Are you sure you want to delete this item?</p>
+    </div>
+    <div class="modal__btns">
+        <button type="button" class="btn btn-secondary modal-btn  modal-btn--cancel"
+        (click)="cancelRemove()" >No</button>
+        <button type="button" class="btn btn-secondary modal-btn  modal-btn--remove"
+        (click)="remove()"  >Yes</button>
+    </div>
+</div>

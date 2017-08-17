@@ -1,0 +1,846 @@
+<div class="wrapper">
+
+<header class="site-header">
+
+            <div class="site-header__top  main-header">
+                <div class="menu">
+                    <button class="small-btn sidebar-toggle" type="button" title="Open sidebar">
+                        <span class="visually-hidden">Open sidebar</span>
+                        <svg class="icon" width="16" height="12">
+                            <use xlink:href="/assets/images/sprite.svg#ico-side-bar" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="searchblock">
+                    <!-- class "searchblock--toggled" to open search on mobile-->
+                    <form action="" class="search-form" method="get">
+                        <button class="small-btn small-btn--search" type="submit">
+                            <span class="visually-hidden">Search</span>
+                            <svg class="icon" width="21" height="20">
+                                <use xlink:href="/assets/images/sprite.svg#ico-search" />
+                            </svg>
+                        </button>
+                        <input class="search-form__input" type="search" id="search-field" name="search-field" placeholder="Search" required>
+                        <ul class="search-helper">
+                        <li class="search-helper__item">ariana grande</li>
+                        <li class="search-helper__item">adele</li>
+                        <li class="search-helper__item">america got talent</li>
+                        <li class="search-helper__item">anhjhggh</li>
+                        <li class="search-helper__item">aghh</li>
+                        <li class="search-helper__item">amjklp</li>
+                        </ul>
+                    </form>
+                </div>
+                <div class="logo">
+                    <h1 class="visually-hidden">Fabulive</h1>
+                    <img class="main-header__img" title="Fabulive"
+                        [routerLink]="['/']"
+                    src="/assets/images/ico_logo_pink.svg"
+                     />
+                </div>
+
+
+                <div class="download">
+                    <a href="" class="download__link">
+                        <svg class="icon" width="18" height="22">
+                            <use xlink:href="/assets/images/sprite.svg#ico-mobile" />
+                        </svg>
+                        <span class="download__text">Download App</span>
+                        <svg class="icon  icon--down" width="7" height="4">
+                            <use xlink:href="/assets/images/sprite.svg#ico-drop-down" />
+                        </svg>
+                    </a>
+                </div>
+
+
+                <div class="userblock">
+                    <a class="userblock__link" href="">
+                        <div class="avatar  avatar--userblock">
+                            <img class="avatar__img" src="/assets/images/avatar-1.jpg"  width="28" height="28"  alt="">
+                        </div>
+                        <span class="userblock__name">Alex Gurinenko</span>
+                        <svg class="icon  icon--down" width="7" height="4">
+                            <use xlink:href="/assets/images/sprite.svg#ico-drop-down" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="site-header__bottom">
+                <div class="site-navigation__wrapper">
+                    <nav class="site-navigation">
+                        <ul class="site-navigation__list">
+                            <li class="site-navigation__item"><a href="#" class="site-navigation__link">Home</a></li>
+                            <li class="site-navigation__item"><a href="#" class="site-navigation__link  site-navigation__link--active">Explore</a></li>
+                            <li class="site-navigation__item"><a href="#" class="site-navigation__link">Following</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+    </header>
+
+    <main class="site-content">
+
+    <aside class="site-sidebar site-sidebar--toggled">
+        <!-- class "site-sidebar--toggled" to display menu on mobile-->
+        <div class="site-sidebar__inner">
+        <div class="site-sidebar__track">
+
+        <nav class="site-navigation">
+                <ul class="site-navigation__list">
+                    <li class="site-navigation__item"><a href="#" class="site-navigation__link">Home</a></li>
+                    <li class="site-navigation__item"><a href="#" class="site-navigation__link  site-navigation__link--active">Explore</a></li>
+                    <li class="site-navigation__item"><a href="#" class="site-navigation__link">Following</a></li>
+                    <li class="site-navigation__item"><a href="#" class="site-navigation__link">My profile</a></li>
+                </ul>
+            </nav>
+            <div class="categories-navigation">
+                <h2 class="site-sidebar__title">Categories</h2>
+                <ul class="categories-navigation__list">
+                    <li class="categories-navigation__item">
+                        <a href="" class="categories-navigation__link">
+                            <span class="categories-navigation__category-name">Category 1</span>
+                            <span class="categories-navigation__category-number">(32)</span>
+                        </a>
+                    </li>
+                    <li class="categories-navigation__item">
+                        <a href="" class="categories-navigation__link">
+                            <span class="categories-navigation__category-name">Category 2</span>
+                            <span class="categories-navigation__category-number">(32)</span>
+                        </a>
+                    </li>
+                    <li class="categories-navigation__item">
+                        <a href="" class="categories-navigation__link">
+                            <span class="categories-navigation__category-name">Category 3</span>
+                            <span class="categories-navigation__category-number">(32)</span>
+                        </a>
+                    </li>
+                    <li class="categories-navigation__item">
+                        <a href="" class="categories-navigation__link">
+                            <span class="categories-navigation__category-name">Category 4</span>
+                            <span class="categories-navigation__category-number">(32)</span>
+                        </a>
+                    </li>
+                    <li class="categories-navigation__item">
+                        <a href="" class="categories-navigation__link">
+                            <span class="categories-navigation__category-name">Category 5</span>
+                            <span class="categories-navigation__category-number">(32)</span>
+                        </a>
+                    </li>
+                </ul>
+                <a href="" class="categories-navigation__show-link  categories-navigation__show-link--more">Show more</a>
+                <a href="" class="categories-navigation__show-link  categories-navigation__show-link--less hidden">Show less</a>
+            </div>
+            </div>
+        </div>
+    </aside>
+
+    <div class="feed  feed--explore">
+
+        <div class="feed__container">
+
+            <div class="shelf">
+                <div class="btn-next"  title="Next">
+                    <svg class="icon" width="6" height="10">
+                        <use xlink:href="/assets/images/sprite.svg#ico-arrow-left" />
+                    </svg>
+                </div>
+                <header class="shelf__header">
+                    <h2 class="shelf__title">Trending now</h2>
+                    <a href="" class="see-all-link">See all (<span class="see-all-link__number">50</span>)</a>
+                </header>
+                <div class="shelf__content">
+                    <div class="shelf__content-inner">
+
+
+
+                    <article class="card">
+                        <header class="card__header">
+                             <div class="username">
+                                <div class="username__main-info">
+                                    <a class="username__link" href="#">
+                                        <div class="avatar"><img  class="avatar__img"  src="/assets/images/avatar-1.jpg"  width="20" height="20" alt=""></div>
+                                        <div class="username__nickname">bobby.brown</div>
+                                    </a>
+                                </div>
+                                <div class="username__secondary-info"></div>
+                            </div>
+                         </header>
+                        <div class="card__content">
+                            <a href="#" class="card__link" title="How To find your perfect lip in 5 minutes and bla-bla-bla">
+                                <div class="card__tumbnail  card__tumbnail--has-tumbnail"><img src="/assets/images/tumb-1.jpg" width="auto" height="140" alt="" class="card__img"></div>
+                                <div class="card__title">
+                                    <span class="skin-color-indicator skin-color-indicator--1"  title="Light skin color"></span>
+                                    <span class="card__category">Makeup Tips</span>
+                                    <h3 class="card__video-title">How To find your perfect lip in 5 minutes and bla-bla-bla</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <footer class="card__footer">
+                            <div class="video-info">
+                                <div class="video-info__item  video-info__item--watchers">
+                                    <span class="video-info__icon">
+                                        <svg class="icon" width="9" height="8">
+                                            <use xlink:href="/assets/images/sprite.svg#ico-eye-small" />
+                                        </svg>
+                                    </span>
+                                    <span class="video-info__number">1,374</span>
+                                    <span class="video-info__name">watching</span>
+                                </div>
+                            </div>
+                            <div class="card__menu-toggle">
+                                <svg class="icon" width="15" height="3">
+                                    <use xlink:href="/assets/images/sprite.svg#btn-more-small" />
+                                </svg>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="card">
+                        <header class="card__header">
+                             <div class="username">
+                                <div class="username__main-info">                                        
+                                    <a class="username__link" href="#">
+                                        <div class="avatar  avatar--default"><span class="avatar__first-letter">M</span></div>
+                                        <div class="username__nickname">medison.eva</div>
+                                    </a>
+                                </div>
+                                <div class="username__secondary-info"></div>
+                            </div>
+                         </header>
+                        <div class="card__content">
+                            <a href="#" class="card__link" title="Make eyes look good">
+                                <div class="card__tumbnail"></div>
+                                <div class="card__title">
+                                    <span class="card__category">Highlighting</span>
+                                    <h3 class="card__video-title">Make eyes look good</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <footer class="card__footer">
+                            <div class="video-info">
+                                <div class="video-info__watchers">
+                                    <span class="video-info__icon">
+                                        <svg class="icon" width="9" height="8">
+                                            <use xlink:href="/assets/images/sprite.svg#ico-eye-small" />
+                                        </svg>
+                                    </span>
+                                    <span class="video-info__number">1,374</span>
+                                    <span class="video-info__name">watching</span>
+                                </div>
+                            </div>
+                            <div class="card__menu-toggle">
+                                <svg class="icon" width="15" height="3">
+                                    <use xlink:href="/assets/images/sprite.svg#btn-more-small" />
+                                </svg>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="card">
+                        <header class="card__header">
+                             <div class="username">
+                                <div class="username__main-info">                                        
+                                    <a class="username__link" href="#">
+                                        <div class="avatar"><img  class="avatar__img" src="/assets/images/avatar-1.jpg"  width="20" height="20"  alt=""></div>
+                                        <div class="username__nickname">bobby.brown</div>
+                                    </a>
+                                </div>
+                                <div class="username__secondary-info"></div>
+                            </div>
+                         </header>
+                        <div class="card__content">
+                            <a href="#" class="card__link" title="How To find your perfect lip in 5 minutes and bla-bla-bla">
+                                <div class="card__tumbnail    card__tumbnail--has-tumbnail"><img src="/assets/images/tumb-1.jpg" width="auto" height="140" alt="" class="card__img"></div>
+                                <div class="card__title">
+                                    <span class="skin-color-indicator skin-color-indicator--1"  title="Light skin color"></span>
+                                    <span class="card__category">Makeup Tips</span>
+                                    <h3 class="card__video-title">How To find your perfect lip in 5 minutes and bla-bla-bla</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <footer class="card__footer">
+                            <div class="video-info">
+                                <div class="video-info__watchers">
+                                    <span class="video-info__icon">
+                                        <svg class="icon" width="9" height="8">
+                                            <use xlink:href="/assets/images/sprite.svg#ico-eye-small" />
+                                        </svg>
+                                    </span>
+                                    <span class="video-info__number">1,374</span>
+                                    <span class="video-info__name">watching</span>
+                                </div>
+                            </div>
+                            <div class="card__menu-toggle">
+                                <svg class="icon" width="15" height="3">
+                                    <use xlink:href="/assets/images/sprite.svg#btn-more-small" />
+                                </svg>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="card">
+                        <header class="card__header">
+                             <div class="username">
+                                <div class="username__main-info">                                        
+                                    <a class="username__link" href="#">
+                                        <div class="avatar  avatar--no-avatar"></div>
+                                        <div class="username__nickname">very.very.longusernameverylong</div>
+                                    </a>
+                                </div>
+                                <div class="username__secondary-info"></div>
+                            </div>
+                         </header>
+                        <div class="card__content">
+                            <a href="#" class="card__link" title="How To find your perfect lip in 5 min">
+                                <div class="card__tumbnail  card__tumbnail--no-tumbnail"><img src="#" width="auto" height="140" alt="" class="card__img"></div>
+                                <div class="card__title">
+                                    <span class="skin-color-indicator skin-color-indicator--1"  title="Light skin color"></span>
+                                    <span class="card__category">Makeup Tips</span>
+                                    <h3 class="card__video-title">How To find your perfect lip in 5 min</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <footer class="card__footer">
+                            <div class="video-info">
+                                <div class="video-info__watchers">
+                                    <span class="video-info__icon">
+                                        <svg class="icon" width="9" height="8">
+                                            <use xlink:href="/assets/images/sprite.svg#ico-eye-small" />
+                                        </svg>
+                                    </span>
+                                    <span class="video-info__number">1,374</span>
+                                    <span class="video-info__name">watching</span>
+                                </div>
+                            </div>
+                            <div class="card__menu-toggle">
+                                <svg class="icon" width="15" height="3">
+                                    <use xlink:href="/assets/images/sprite.svg#btn-more-small" />
+                                </svg>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="card">
+                        <header class="card__header">
+                             <div class="username">
+                                <div class="username__main-info">                                        
+                                    <a class="username__link" href="#">
+                                        <div class="avatar"><img  class="avatar__img"  src="/assets/images/avatar-1.jpg"  width="20" height="20"  alt=""></div>
+                                        <div class="username__nickname">bobby.brown</div>
+                                    </a>
+                                </div>
+                                <div class="username__secondary-info"></div>
+                            </div>
+                         </header>
+                        <div class="card__content">
+                            <a href="#" class="card__link" title="How To find your perfect lip in 5 minutes and bla-bla-bla">
+                                <div class="card__tumbnail  card__tumbnail--has-tumbnail"><img src="/assets/images/tumb-1.jpg" width="auto" height="140" alt="" class="card__img"></div>
+                                <div class="card__title">
+                                    <span class="card__category">Makeup Tips</span>
+                                    <h3 class="card__video-title">How To find your perfect lip in 5 minutes and bla-bla-bla</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <footer class="card__footer">
+                            <div class="video-info">
+                                <div class="video-info__watchers">
+                                    <span class="video-info__icon">
+                                        <svg class="icon" width="9" height="8">
+                                            <use xlink:href="/assets/images/sprite.svg#ico-eye-small" />
+                                        </svg>
+                                    </span>
+                                    <span class="video-info__number">1,374</span>
+                                    <span class="video-info__name">watching</span>
+                                </div>
+                            </div>
+                            <div class="card__menu-toggle">
+                                <svg class="icon" width="15" height="3">
+                                    <use xlink:href="/assets/images/sprite.svg#btn-more-small" />
+                                </svg>
+                            </div>
+                        </footer>
+                    </article>
+
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="feed__container">
+            <div class="shelf">
+                <div class="btn-next"  title="Next">
+                    <svg class="icon" width="6" height="10">
+                        <use xlink:href="/assets/images/sprite.svg#ico-arrow-left" />
+                    </svg>
+                </div>
+                <header class="shelf__header">
+                    <h2 class="shelf__title">Best in <span class="category-name">Makeup tips</span></h2>
+                    <a href="" class="see-all-link">See all (<span class="see-all-link__number">40</span>)</a>
+                </header>
+               <div class="shelf__content">
+                   <div class="shelf__content-inner">
+
+
+
+                    <article class="card">
+                        <header class="card__header">
+                             <div class="username">
+                                <div class="username__main-info">                                        
+                                    <a class="username__link" href="#">
+                                        <div class="avatar"><img  class="avatar__img"  src="/assets/images/avatar-1.jpg"  width="20" height="20"  alt=""></div>
+                                        <div class="username__nickname">bobby.brown</div>
+                                    </a>
+                                </div>
+                                <div class="username__secondary-info"></div>
+                            </div>
+                         </header>
+                        <div class="card__content">
+                            <a href="#" class="card__link" title="How To find your perfect lip in 5 minutes and bla-bla-bla">
+                                <div class="card__tumbnail  card__tumbnail--has-tumbnail"><img src="/assets/images/tumb-1.jpg" width="auto" height="140" alt="" class="card__img"></div>
+                                <div class="card__title">
+                                    <span class="skin-color-indicator skin-color-indicator--1"  title="Light skin color"></span>
+                                    <span class="card__category">Makeup Tips</span>
+                                    <h3 class="card__video-title">How To find your perfect lip in 5 minutes and bla-bla-bla</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <footer class="card__footer">
+                            <div class="video-info">
+                                <div class="video-info__watchers">
+                                    <span class="video-info__icon">
+                                        <svg class="icon" width="9" height="8">
+                                            <use xlink:href="/assets/images/sprite.svg#ico-eye-small" />
+                                        </svg>
+                                    </span>
+                                    <span class="video-info__number">1,374</span>
+                                    <span class="video-info__name">watching</span>
+                                </div>
+                            </div>
+                            <div class="card__menu-toggle">
+                                <svg class="icon" width="15" height="3">
+                                    <use xlink:href="/assets/images/sprite.svg#btn-more-small" />
+                                </svg>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="card">
+                        <header class="card__header">
+                             <div class="username">
+                                <div class="username__main-info">                                        
+                                    <a class="username__link" href="#">
+                                        <div class="avatar  avatar--default"><span class="avatar__first-letter">M</span></div>
+                                     <div class="username__nickname">medison.eva</div>
+                                    </a>
+                                </div>
+                                <div class="username__secondary-info"></div>
+                            </div>
+                         </header>
+                        <div class="card__content">
+                            <a href="#" class="card__link" title="Make eyes look good">
+                                <div class="card__tumbnail"></div>
+                                <div class="card__title">
+                                    <span class="skin-color-indicator skin-color-indicator--1"  title="Light skin color"></span>
+                                    <span class="card__category">Highlighting</span>
+                                    <h3 class="card__video-title">Make eyes look good</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <footer class="card__footer">
+                            <div class="video-info">
+                                <div class="video-info__watchers">
+                                    <span class="video-info__icon">
+                                        <svg class="icon" width="9" height="8">
+                                            <use xlink:href="/assets/images/sprite.svg#ico-eye-small" />
+                                        </svg>
+                                    </span>
+                                    <span class="video-info__number">1,374</span>
+                                    <span class="video-info__name">watching</span>
+                                </div>
+                            </div>
+                            <div class="card__menu-toggle">
+                                <svg class="icon" width="15" height="3">
+                                    <use xlink:href="/assets/images/sprite.svg#btn-more-small" />
+                                </svg>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="card">
+                        <header class="card__header">
+                             <div class="username">
+                                <div class="username__main-info">                                        
+                                    <a class="username__link" href="#">
+                                        <div class="avatar"><img  class="avatar__img"  src="/assets/images/avatar-1.jpg"  width="20" height="20"  alt=""></div>
+                                        <div class="username__nickname">bobby.brown</div>
+                                    </a>
+                                </div>
+                                <div class="username__secondary-info"></div>
+                            </div>
+                         </header>
+                        <div class="card__content">
+                            <a href="#" class="card__link"  title="How To find your perfect lip in 5 minutes and bla-bla-bla">
+                                <div class="card__tumbnail    card__tumbnail--has-tumbnail"><img src="/assets/images/tumb-1.jpg" width="auto" height="140" alt="" class="card__img"></div>
+                                <div class="card__title">
+                                    <span class="skin-color-indicator skin-color-indicator--1"  title="Light skin color"></span>
+                                    <span class="card__category">Makeup Tips</span>
+                                    <h3 class="card__video-title">How To find your perfect lip in 5 minutes and bla-bla-bla</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <footer class="card__footer">
+                            <div class="video-info">
+                                <div class="video-info__watchers">
+                                    <span class="video-info__icon">
+                                        <svg class="icon" width="9" height="8">
+                                            <use xlink:href="/assets/images/sprite.svg#ico-eye-small" />
+                                        </svg>
+                                    </span>
+                                    <span class="video-info__number">1,374</span>
+                                    <span class="video-info__name">watching</span>
+                                </div>
+                            </div>
+                            <div class="card__menu-toggle">
+                                <svg class="icon" width="15" height="3">
+                                    <use xlink:href="/assets/images/sprite.svg#btn-more-small" />
+                                </svg>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="card">
+                        <header class="card__header">
+                             <div class="username">
+                                <div class="username__main-info">                                        
+                                    <a class="username__link" href="#">
+                                        <div class="avatar  avatar--no-avatar"><img src="#" alt=""></div>
+                                        <div class="username__nickname">very.very.longusernameverylong</div>
+                                    </a>
+                                </div>
+                                <div class="username__secondary-info"></div>
+                            </div>
+                         </header>
+                        <div class="card__content">
+                            <a href="#" class="card__link"  title="How To find your perfect lip in 5 min">
+                                <div class="card__tumbnail   card__tumbnail--no-tumbnail"><img src="#" width="auto" height="140" alt="" class="card__img"></div>
+                                <div class="card__title">
+                                    <span class="skin-color-indicator skin-color-indicator--1"  title="Light skin color"></span>
+                                    <span class="card__category">Makeup Tips</span>
+                                    <h3 class="card__video-title">How To find your perfect lip in 5 min</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <footer class="card__footer">
+                            <div class="video-info">
+                                <div class="video-info__watchers">
+                                    <span class="video-info__icon">
+                                        <svg class="icon" width="9" height="8">
+                                            <use xlink:href="/assets/images/sprite.svg#ico-eye-small" />
+                                        </svg>
+                                    </span>
+                                    <span class="video-info__number">1,374</span>
+                                    <span class="video-info__name">watching</span>
+                                </div>
+                            </div>
+                            <div class="card__menu-toggle">
+                                <svg class="icon" width="15" height="3">
+                                    <use xlink:href="/assets/images/sprite.svg#btn-more-small" />
+                                </svg>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="card">
+                        <header class="card__header">
+                             <div class="username">
+                                <div class="username__main-info">                                        
+                                    <a class="username__link" href="#">
+                                        <div class="avatar"><img  class="avatar__img"  src="/assets/images/avatar-1.jpg"  width="20" height="20"  alt=""></div>
+                                        <div class="username__nickname">bobby.brown</div>
+                                    </a>
+                                </div>
+                                <div class="username__secondary-info"></div>
+                            </div>
+                         </header>
+                        <div class="card__content">
+                            <a href="#" class="card__link"   title="How To find your perfect lip in 5 minutes and bla-bla-bla">
+                                <div class="card__tumbnail    card__tumbnail--has-tumbnail"><img src="/assets/images/tumb-1.jpg" width="auto" height="140" alt="" class="card__img"></div>
+                                <div class="card__title">
+                                    <span class="skin-color-indicator skin-color-indicator--1"  title="Light skin color"></span>
+                                    <span class="card__category">Makeup Tips</span>
+                                    <h3 class="card__video-title">How To find your perfect lip in 5 minutes and bla-bla-bla</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <footer class="card__footer">
+                            <div class="video-info">
+                                <div class="video-info__watchers">
+                                    <span class="video-info__icon">
+                                        <svg class="icon" width="9" height="8">
+                                            <use xlink:href="/assets/images/sprite.svg#ico-eye-small" />
+                                        </svg>
+                                    </span>
+                                    <span class="video-info__number">1,374</span>
+                                    <span class="video-info__name">watching</span>
+                                </div>
+                            </div>
+                            <div class="card__menu-toggle">
+                                <svg class="icon" width="15" height="3">
+                                    <use xlink:href="/assets/images/sprite.svg#btn-more-small" />
+                                </svg>
+                            </div>
+                        </footer>
+                    </article>
+
+                </div>
+                </div>
+            </div>
+            <div class="shelf">
+                <div class="btn-next"  title="Next">
+                    <svg class="icon" width="6" height="10">
+                        <use xlink:href="/assets/images/sprite.svg#ico-arrow-left" />
+                    </svg>
+                </div>
+                <header class="shelf__header">
+                    <h2 class="shelf__title">Best in <span class="category-name">Highlighting</span>
+                    </h2>
+                    <a href="" class="see-all-link">See all (<span class="see-all-link__number">50</span>)</a> 
+                </header>
+               <div class="shelf__content">
+                   <div class="shelf__content-inner">
+
+
+
+                    <article class="card">
+                        <header class="card__header">
+                             <div class="username">
+                                <div class="username__main-info">                                        
+                                    <a class="username__link" href="#">
+                                        <div class="avatar"><img  class="avatar__img"  src="/assets/images/avatar-1.jpg"  width="20" height="20"  alt=""></div>
+                                        <div class="username__nickname">bobby.brown</div>
+                                    </a>
+                                </div>
+                                <div class="username__secondary-info"></div>
+                            </div>
+                         </header>
+                        <div class="card__content">
+                            <a href="#" class="card__link"   title="How To find your perfect lip in 5 minutes and bla-bla-bla">
+                                <div class="card__tumbnail  card__tumbnail--has-tumbnail"><img src="/assets/images/tumb-1.jpg" width="auto" height="140" alt="" class="card__img"></div>
+                                <div class="card__title">
+                                    <span class="skin-color-indicator skin-color-indicator--1"  title="Light skin color"></span>
+                                    <span class="card__category">Makeup Tips</span>
+                                    <h3 class="card__video-title">How To find your perfect lip in 5 minutes and bla-bla-bla</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <footer class="card__footer">
+                            <div class="video-info">
+                                <div class="video-info__watchers">
+                                    <span class="video-info__icon">
+                                        <svg class="icon" width="9" height="8">
+                                            <use xlink:href="/assets/images/sprite.svg#ico-eye-small" />
+                                        </svg>
+                                    </span>
+                                    <span class="video-info__number">1,374</span>
+                                    <span class="video-info__name">watching</span>
+                                </div>
+                            </div>
+                            <div class="card__menu-toggle">
+                                <svg class="icon" width="15" height="3">
+                                    <use xlink:href="/assets/images/sprite.svg#btn-more-small" />
+                                </svg>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="card">
+                        <header class="card__header">
+                             <div class="username">
+                                <div class="username__main-info">                                        
+                                    <a class="username__link" href="#">
+                                        <div class="avatar  avatar--default"><span class="avatar__first-letter">M</span></div>
+                                        <div class="username__nickname">medison.eva</div>
+                                    </a>
+                                </div>
+                                <div class="username__secondary-info"></div>
+                            </div>
+                         </header>
+                        <div class="card__content">
+                            <a href="#" class="card__link"   title="Make eyes look good">
+                                <div class="card__tumbnail"></div>
+                                <div class="card__title">
+                                    <span class="card__category">Highlighting</span>
+                                    <h3 class="card__video-title">Make eyes look good</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <footer class="card__footer">
+                            <div class="video-info">
+                                <div class="video-info__watchers">
+                                    <span class="video-info__icon">
+                                        <svg class="icon" width="9" height="8">
+                                            <use xlink:href="/assets/images/sprite.svg#ico-eye-small" />
+                                        </svg>
+                                    </span>
+                                    <span class="video-info__number">1,374</span>
+                                    <span class="video-info__name">watching</span>
+                                </div>
+                            </div>
+                            <div class="card__menu-toggle">
+                                <svg class="icon" width="15" height="3">
+                                    <use xlink:href="/assets/images/sprite.svg#btn-more-small" />
+                                </svg>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="card">
+                        <header class="card__header">
+                             <div class="username">
+                                <div class="username__main-info">                                        
+                                    <a class="username__link" href="#">
+                                        <div class="avatar"><img  class="avatar__img"  src="/assets/images/avatar-1.jpg"  width="20" height="20"  alt=""></div>
+                                        <div class="username__nickname">bobby.brown</div>
+                                    </a>
+                                </div>
+                                <div class="username__secondary-info"></div>
+                            </div>
+                         </header>
+                        <div class="card__content">
+                            <a href="#" class="card__link" title="How To find your perfect lip in 5 minutes and bla-bla-bla">
+                                <div class="card__tumbnail    card__tumbnail--has-tumbnail"><img src="/assets/images/tumb-1.jpg" width="auto" height="140" alt="" class="card__img"></div>
+                                <div class="card__title">
+                                    <span class="skin-color-indicator skin-color-indicator--1"  title="Light skin color"></span>
+                                    <span class="card__category">Makeup Tips</span>
+                                    <h3 class="card__video-title">How To find your perfect lip in 5 minutes and bla-bla-bla</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <footer class="card__footer">
+                            <div class="video-info">
+                                <div class="video-info__watchers">
+                                    <span class="video-info__icon">
+                                        <svg class="icon" width="9" height="8">
+                                            <use xlink:href="/assets/images/sprite.svg#ico-eye-small" />
+                                        </svg>
+                                    </span>
+                                    <span class="video-info__number">1,374</span>
+                                    <span class="video-info__name">watching</span>
+                                </div>
+                            </div>
+                            <div class="card__menu-toggle">
+                                <svg class="icon" width="15" height="3">
+                                    <use xlink:href="/assets/images/sprite.svg#btn-more-small" />
+                                </svg>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="card">
+                        <header class="card__header">
+                             <div class="username">
+                                <div class="username__main-info">                                        
+                                    <a class="username__link" href="#">
+                                        <div class="avatar  avatar--no-avatar"><img src="#" alt=""></div>
+                                        <div class="username__nickname">very.very.longusernameverylong</div>
+                                    </a>
+                                </div>
+                                <div class="username__secondary-info"></div>
+                            </div>
+                         </header>
+                        <div class="card__content">
+                            <a href="#" class="card__link" title="How To find your perfect lip in 5 min">
+                                <div class="card__tumbnail   card__tumbnail--no-tumbnail"><img src="#" width="auto" height="140" alt="" class="card__img"></div>
+                                <div class="card__title">
+                                    <span class="skin-color-indicator skin-color-indicator--1"  title="Light skin color"></span>
+                                    <span class="card__category">Makeup Tips</span>
+                                    <h3 class="card__video-title">How To find your perfect lip in 5 min</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <footer class="card__footer">
+                            <div class="video-info">
+                                <div class="video-info__watchers">
+                                    <span class="video-info__icon">
+                                        <svg class="icon" width="9" height="8">
+                                            <use xlink:href="/assets/images/sprite.svg#ico-eye-small" />
+                                        </svg>
+                                    </span>
+                                    <span class="video-info__number">1,374</span>
+                                    <span class="video-info__name">watching</span>
+                                </div>
+                            </div>
+                            <div class="card__menu-toggle">
+                                <svg class="icon" width="15" height="3">
+                                    <use xlink:href="/assets/images/sprite.svg#btn-more-small" />
+                                </svg>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="card">
+                        <header class="card__header">
+                             <div class="username">
+                                <div class="username__main-info">                                        
+                                    <a class="username__link" href="#">
+                                        <div class="avatar"><img  class="avatar__img"  src="/assets/images/avatar-1.jpg"  width="20" height="20"  alt=""></div>
+                                        <div class="username__nickname">bobby.brown</div>
+                                    </a>
+                                </div>
+                                <div class="username__secondary-info"></div>
+                            </div>
+                         </header>
+                        <div class="card__content">
+                            <a href="#" class="card__link" title="How To find your perfect lip in 5 minutes and bla-bla-bla">
+                                <div class="card__tumbnail    card__tumbnail--has-tumbnail"><img src="/assets/images/tumb-1.jpg" width="auto" height="140" alt="" class="card__img"></div>
+                                <div class="card__title">
+                                    <span class="skin-color-indicator skin-color-indicator--1"  title="Light skin color"></span>
+                                    <span class="card__category">Makeup Tips</span>
+                                    <h3 class="card__video-title">How To find your perfect lip in 5 minutes and bla-bla-bla</h3>
+                                </div>
+                            </a>
+                        </div>
+                        <footer class="card__footer">
+                            <div class="video-info">
+                                <div class="video-info__watchers">
+                                    <span class="video-info__icon">
+                                        <svg class="icon" width="9" height="8">
+                                            <use xlink:href="/assets/images/sprite.svg#ico-eye-small" />
+                                        </svg> 
+                                    </span>
+                                    <span class="video-info__number">1,374</span>
+                                    <span class="video-info__name">watching</span>
+                                </div>
+                            </div>
+                            <div class="card__menu-toggle">
+                                <svg class="icon" width="15" height="3">
+                                    <use xlink:href="/assets/images/sprite.svg#btn-more-small" />
+                                </svg>
+                            </div>
+                        </footer>
+                    </article>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="button-wrapper button-wrapper--loader">
+            <button type="button" class="button button-pink button--load-more">Load more</button>
+        </div>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="site-footer__inner">
+        <ul class="site-footer__nav">
+            <li class="site-footer__nav-item"><a href="" class="site-footer__nav-link">About</a></li>
+            <li class="site-footer__nav-item"><a href="" class="site-footer__nav-link">Terms of Usage</a></li>
+            <li class="site-footer__nav-item"><a href="" class="site-footer__nav-link">Privacy Policy</a></li>
+        </ul>
+        <div class="site-footer__copyright">
+            <p>© 2017  Fabulive Ltd, All Rights Reserved</p>
+        </div>
+    </div>
+</footer>
+
+</div>

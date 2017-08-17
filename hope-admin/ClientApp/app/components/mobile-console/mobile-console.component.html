@@ -1,0 +1,110 @@
+<div class="animated fadeIn pad__top-middle flex flex-justify">
+   
+
+    <div class="console-list console-list__session vh90" >  
+
+        <p>
+            <input class="console-list__search pad__left-small" type="text" placeholder="search" 
+            #sessionSearchInput 
+            (keyup.enter)="setSessionSearch(sessionSearchInput.value)" 
+            (blur)="setSessionSearch(sessionSearchInput.value)" 
+            >
+        </p>    
+
+
+        <div class="scroll vh82" >
+
+            <div class="console-list__item pointer"
+                *ngFor="let session of filter(sessions,'sessionId', sessionSearch); let i = index" 
+                (click)="selectSession(session)" >
+                <p class="session pad__left-small"
+                    [class.session-is-active]=" session.isActive " 
+                    [class.session__active]=" session.type == 'active' "
+                    [class.session__closed]=" session.type == 'closed' "
+                    [class.session__exception]=" session.type == 'exception' " >
+                    {{ session.sessionId }}
+                </p>
+            </div>    
+    
+
+        </div> 
+
+    </div>
+
+
+    <div class="console-list console-list__table vh90" >  
+
+
+        <div *ngIf="activeSession" >
+
+        <p>
+        <input class="console-list__search pad__left-small" type="text" placeholder="search" 
+            #tabSearchInput 
+            (keyup.enter)="setTabSearch(tabSearchInput.value)" 
+            (blur)="setTabSearch(tabSearchInput.value)" 
+             >
+        </p>
+
+        
+        <div class="console__tab-header flex flex-start" >
+
+                <div class="console__tab-item pointer"  
+                [class.console__tab-item__is-active]="activeConsoleTab == 'logs' " 
+                (click)="activateConsoleTab('logs')" > 
+                    Logs       
+                </div>
+            
+                <div class="console__tab-item pointer"  
+                [class.console__tab-item__is-active]="activeConsoleTab == 'states' " 
+                (click)="activateConsoleTab('states')" > 
+                    States
+                </div>
+            
+                <div class="console__tab-item pointer"  
+                [class.console__tab-item__is-active]="activeConsoleTab == 'devices' " 
+                (click)="activateConsoleTab('devices')" > 
+                    Devices
+                </div>
+
+        </div>
+
+        <div class="console__tab-body scroll vh76" >
+
+                 <div class="console-list__item pad__left-small pointer"
+                    *ngFor="let tab of filter( activeSession ? activeSession[activeConsoleTab] : [], 'value', tabSearch ); let i = index" >
+                    <div [innerHTML]="tab.value | safe: 'html' " >
+                    </div>
+                </div>  
+
+        </div>
+
+        </div>
+
+    </div>
+
+
+     <div class="console-list console-list__add" >  
+         
+
+        <input #newSession class="console-list__search" type="text" placeholder="session" >
+
+        <input type="button" value="add" (click)="addToConsoleList('session', newSession.value)" >
+
+        <br>
+
+        <input #newLog class="console-list__search" type="text" placeholder="log" >
+
+        <input type="button" value="add" (click)="addToConsoleList('log', newLog.value)" >
+
+        <br>
+
+        <input #newState class="console-list__search" type="text" placeholder="state" >
+
+        <input type="button" value="add" (click)="addToConsoleList('state', newState.value)" >
+
+
+     </div>
+
+
+
+</div>

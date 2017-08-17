@@ -1,0 +1,96 @@
+
+
+
+
+<header class="app-header navbar">
+    <button class="navbar-toggler d-lg-none" type="button" appMobileSidebarToggler>
+        &#9776;
+    </button>
+    <a class="navbar-brand" href="/dashboard">     
+    </a>
+    <ul class="nav navbar-nav mr-auto d-md-down-none">
+        <li class="nav-item">
+            <a class="nav-link navbar-toggler" href="/dashboard" appSidebarToggler>&#9776;</a>
+        </li>
+    </ul>
+</header>
+
+<div class="app-body">
+    <div class="sidebar">
+        <nav class="sidebar-nav">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" 
+                    [routerLink]="['/dashboard']">
+                        <i class="icon-speedometer"></i> Dashboard 
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" 
+                    [routerLink]="['/dashboard/mobile-console']">
+                        <i class="icon-speedometer"></i> Mobile Console
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" 
+                    [routerLink]="['/dashboard/purchases']">
+                        <i class="icon-speedometer"></i> Purchases
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" 
+                    [routerLink]="['/dashboard/gifts']">
+                        <i class="icon-speedometer"></i> Gifts
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" 
+                    [routerLink]="['/dashboard/report-list']">
+                        <i class="icon-speedometer"></i> Reports List
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" 
+                    [routerLink]="['/dashboard/withdraw-list']">
+                        <i class="icon-speedometer"></i> Withdraw list
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" 
+                    [routerLink]="['/dashboard/users-list']">
+                        <i class="icon-speedometer"></i> Users List
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLinkActive="active" 
+                    [routerLink]="['/dashboard/profile']">
+                        <i class="icon-speedometer"></i> Profile
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main content -->
+    <main class="main">
+
+        <!-- Breadcrumb 
+        <ol class="breadcrumb">
+            <app-breadcrumbs></app-breadcrumbs>
+        </ol>
+        -->
+
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+        </div>
+        <!-- /.conainer-fluid -->
+    </main>
+</div>
+
+<footer class="app-footer">
+
+    <a href="http://www.fabulive.com"> Fabulive </a> &copy; 2017 StreamTech.
+
+</footer>
+
+

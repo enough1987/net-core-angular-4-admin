@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="15px" viewBox="0 0 16 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43.1 (39012) - http://www.bohemiancoding.com/sketch -->
+    <title>Close button</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Fabulive" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="FabuliveWeb---Home-screen-Email-confirmation-Copy" transform="translate(-1231.000000, -318.000000)" fill="#ECEFF1">
+            <g id="Email-Confirm-popup" transform="translate(0.000000, -3.000000)">
+                <g id="popup" transform="translate(764.000000, 302.000000)">
+                    <g id="Close-button" transform="translate(474.813708, 26.709524) rotate(-315.000000) translate(-474.813708, -26.709524) translate(464.813708, 16.709524)">
+                        <path d="M1.24134012,8.91595259 L18.6201017,8.91595259 C19.305675,8.91595259 19.8614419,9.36366784 19.8614419,9.91595259 C19.8614419,10.4682373 19.305675,10.9159526 18.6201017,10.9159526 L1.24134012,10.9159526 C0.555766901,10.9159526 1.70530257e-13,10.4682373 1.70530257e-13,9.91595259 C1.70530257e-13,9.36366784 0.555766901,8.91595259 1.24134012,8.91595259 Z" id="Rectangle-5"></path>
+                        <path d="M10.9159526,1.24134012 L10.9159526,18.6201017 C10.9159526,19.305675 10.4682373,19.8614419 9.91595259,19.8614419 C9.36366784,19.8614419 8.91595259,19.305675 8.91595259,18.6201017 L8.91595259,1.24134012 C8.91595259,0.555766901 9.36366784,2.84217094e-13 9.91595259,2.84217094e-13 C10.4682373,2.84217094e-13 10.9159526,0.555766901 10.9159526,1.24134012 Z" id="Rectangle-5-Copy"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

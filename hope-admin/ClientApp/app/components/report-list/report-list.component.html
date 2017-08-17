@@ -1,0 +1,358 @@
+<div class="animated fadeIn pad__top-middle dashboard-wrap vh90">
+
+
+    <div class="dashboard-header">
+
+        <input type="button" class="btn btn-secondary item-right" value="Broadcasters" 
+        [class.console__tab-item__is-active]=" id == 'broadcasters' " 
+        (click)=" setReportListId('broadcasters') ">
+
+        <input type="button" class="btn btn-secondary item-right" value="Chat reports"
+        [class.console__tab-item__is-active]=" id == 'chatReports' "  
+        (click)=" setReportListId('chatReports') ">
+
+    </div>
+
+    <div class=" scroll vh82"
+    *ngIf=" id == 'broadcasters' ">
+
+        <ngx-datatable
+            #myTable
+            class='material expandable'
+            [columnMode]="'standard'"
+            [headerHeight]="50"
+            [footerHeight]="0"
+            [rowHeight]="50"
+            [scrollbarV]="50"
+            [rows]='rows' >
+
+            <!-- Row Detail Template -->
+        <ngx-datatable-row-detail style="border: 1px solid red !important;" 
+            [rowHeight]="200" 
+            #myDetailRow 
+            (toggle)="onDetailToggle($event)">
+        <ng-template let-row="row" let-value="value" ngx-datatable-row-detail-template >
+
+
+            <!-- LOL -->
+
+            <div class="dashboard-table-body scroll ">
+
+              <div *ngFor="let item of row ; let i = index" >
+                <div class="dashboard-table-body__row " 
+                *ngIf="i != 0" >
+
+                        <div style="width:50px" >
+
+                        </div>
+
+                        <div class="dashboard-table-body__cell " 
+                        style="width:100px; max-width:100px; text-overflow: ellipsis;" >
+                            {{ msToTime(item.time) }}
+                        </div>
+
+                        <div class="dashboard-table-body__cell " >
+                            
+                        </div>
+
+                        <div class="dashboard-table-body__cell " >
+                            {{ item.roomId }}
+                        </div>
+
+                        <div class="dashboard-table-body__cell " >
+                            {{ item.reason }}
+                        </div>
+
+                        <div class="dashboard-table-body__cell " >
+                            {{ item.complainant }}
+                        </div>
+
+                        <div class="dashboard-table-body__cell " style="width:100px" >
+
+                        </div>
+
+                        <div class="dashboard-table-body__cell " >
+
+                            <img 
+                            src="/assets/img/ban.png" 
+                            class="dashboard-table-body__cell-img-in" 
+                            *ngIf="item.banned" />
+
+
+                            <button class="btn btn-secondary btn-report" 
+                            *ngIf="!item.banned" 
+                            (click)="ban(item)" > ban </button>
+                            
+                        </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            <!-- LOL -->
+
+        </ng-template>
+        </ngx-datatable-row-detail>
+
+            <!-- Column Templates -->
+            <ngx-datatable-column
+            [width]="50"
+            [resizeable]="false"
+            [sortable]="false"
+            [draggable]="false"
+            [canAutoResize]="false">
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+
+                            <img src="/assets/img/if_arrow_up.svg" 
+                            class="dashboard-table-body__cell-img" 
+                            title="Expand/Collapse Row"
+                            (click)="toggleExpandRow(row)"
+                            *ngIf=" row.length > 1 && row.$$expanded" />
+                            <img src="/assets/img/if_arrow_down.svg" 
+                            class="dashboard-table-body__cell-img" 
+                            *ngIf=" row.length > 1 && !row.$$expanded " 
+                            title="Expand/Collapse Row"
+                            (click)="toggleExpandRow(row)"/>
+
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column  name="Time" [width]="100" 
+                style="width:100px; max-width:100px; text-overflow: ellipsis;" >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+                <div class="dashboard-table-body__cell " >
+                {{ msToTime(row[0].time) }}
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="User Id" [width]="200" >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+                <div class="dashboard-table-body__cell " >
+                {{ row[0]?.userId }} 
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Room Id" [width]="200" >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                <div class="dashboard-table-body__cell " >
+                {{ row[0]?.roomId }}
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Reason" [width]="200" >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+                <div class="dashboard-table-body__cell " >
+                {{ row[0]?.reason }} 
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Сomplainant" [width]="200" >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+                <div class="dashboard-table-body__cell " >
+                {{ row[0]?.complainant }}
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column  name="Amount" [width]="100" >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+                <div class="dashboard-table-body__cell " >
+                {{ row.length }}
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+
+               <button class="btn btn-secondary btn-report" 
+               (click)="ban(row[0])" > ban </button>
+
+
+
+               
+
+            </ng-template>
+            </ngx-datatable-column>
+
+        </ngx-datatable>
+
+    </div> <!-- !!!!!!!!!!!!!!!! -->
+
+    <div class=" scroll vh82"
+    *ngIf=" id == 'chatReports' ">
+
+
+      <ngx-datatable
+            #myTable
+            class='material expandable'
+            [columnMode]="'standard'"
+            [headerHeight]="50"
+            [footerHeight]="0"
+            [rowHeight]="50"
+            [scrollbarV]="50"
+            [rows]='rows' >
+
+            <!-- Row Detail Template -->
+        <ngx-datatable-row-detail style="border: 1px solid red !important;" 
+            [rowHeight]="200" 
+            #myDetailRow 
+            (toggle)="onDetailToggle($event)">
+        <ng-template let-row="row" let-value="value" ngx-datatable-row-detail-template >
+
+
+            <!-- LOL -->
+
+            <div class="dashboard-table-body scroll ">
+
+              <div *ngFor="let item of row ; let i = index" >
+                <div class="dashboard-table-body__row " 
+                *ngIf="i != 0" >
+
+                        <div  class="dashboard-table-body__cell " 
+                            style="width:50px" >
+
+                        </div>
+
+                        <div  class="dashboard-table-body__cell " 
+                        style="width:100px; max-width:100px; text-overflow: ellipsis;" >
+                            {{ msToTime(item.time) }}
+                        </div>
+
+                        <div class="dashboard-table-body__cell " >
+                            
+                        </div>
+
+                        <div class="dashboard-table-body__cell " >
+                            {{ item.roomId }}
+                        </div>
+
+                        <div class="dashboard-table-body__cell " >
+                            {{ item.message }}
+                        </div>
+
+                        <div class="dashboard-table-body__cell " >
+                            {{ item.complainant }}
+                        </div>
+
+                        <div  class="dashboard-table-body__cell " style="width:100px" >
+
+                        </div>
+
+                        <div class="dashboard-table-body__cell " >
+
+                            <img 
+                            src="/assets/img/ban.png" 
+                            class="dashboard-table-body__cell-img-in" 
+                            *ngIf="item.banned" />
+
+
+                            <button class="btn btn-secondary btn-report" 
+                            *ngIf="!item.banned" 
+                            (click)="ban(item)" > ban </button>
+                            
+                        </div>
+
+                </div>
+              </div>
+
+            </div>
+
+            <!-- LOL -->
+
+        </ng-template>
+        </ngx-datatable-row-detail>
+
+            <!-- Column Templates -->
+            <ngx-datatable-column
+            [width]="50"
+            [resizeable]="false"
+            [sortable]="false"
+            [draggable]="false"
+            [canAutoResize]="false">
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+
+                            <img src="/assets/img/if_arrow_up.svg" 
+                            class="dashboard-table-body__cell-img" 
+                            title="Expand/Collapse Row"
+                            (click)="toggleExpandRow(row)"
+                            *ngIf=" row.length > 1 && row.$$expanded" />
+                            <img src="/assets/img/if_arrow_down.svg" 
+                            class="dashboard-table-body__cell-img" 
+                            *ngIf=" row.length > 1 && !row.$$expanded " 
+                            title="Expand/Collapse Row"
+                            (click)="toggleExpandRow(row)"/>
+
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column  name="Time"  [width]="100" 
+                style="width:100px; max-width:100px; text-overflow: ellipsis;" >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+                <div class="dashboard-table-body__cell " >
+                {{ msToTime(row[0].time) }}
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="User Id" [width]="200" >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+                <div class="dashboard-table-body__cell " >
+                {{ row[0]?.userId }} 
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Room Id" [width]="200" >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                <div class="dashboard-table-body__cell " >
+                {{ row[0]?.roomId }}
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Message" [width]="200" >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+                <div class="dashboard-table-body__cell " >
+                {{ row[0]?.message }} 
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Сomplainant" [width]="200" >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+                <div class="dashboard-table-body__cell " >
+                {{ row[0]?.complainant }}
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Amount"  [width]="100" >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+                <div class="dashboard-table-body__cell " >
+                {{ row.length }}
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column   >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+
+               <button class="btn btn-secondary btn-report" 
+               (click)="ban(row[0])" > ban </button>
+
+            </ng-template>
+            </ngx-datatable-column>
+
+        </ngx-datatable>
+
+
+    </div> <!-- !!!!!!!!!!!!!!!! -->
+
+
+</div>

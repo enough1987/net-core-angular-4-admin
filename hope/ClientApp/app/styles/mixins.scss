@@ -1,0 +1,57 @@
+@mixin visually-hidden {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+
+    border: 0;
+
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+@mixin placeholder($color: grey) {
+    &::placeholder {
+    color: $color;
+    text-overflow:ellipsis;
+  }
+
+  &:-moz-placeholder {
+    color: $color;
+    text-overflow:ellipsis;
+  }
+
+  &::-moz-placeholder {
+    color: $color;
+    text-overflow:ellipsis;
+  }
+
+  &::-webkit-input-placeholder {
+    color: $color;
+    text-overflow:ellipsis;
+  }
+
+  &:-ms-input-placeholder  {
+    color: $color;
+    text-overflow: ellipsis;
+  }
+}
+
+@mixin box {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px 0 $dark-blue-grey-10;
+}
+
+@mixin row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+@mixin column($columnwidth: 1, $columncount: 12, $gutter: 30px, $padding: 18px) {
+  width: calc(100% / #{$columncount} * #{$columnwidth} - #{$gutter} - #{$padding});
+  //margin: -1 * $gutter;
+}

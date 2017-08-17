@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="18px" viewBox="0 0 19 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <filter x="-6.5%" y="-1.7%" width="112.9%" height="105.3%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.925490196   0 0 0 0 0.937254902   0 0 0 0 0.945098039  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Fabulive---Broadcast-" stroke-width="1" fill-rule="evenodd" fill="#4a5d76">
+        <g id="fab-broadcast-not-signed" transform="translate(-1584.000000, -882.000000)">
+            <g id="Chat-with-Gift" filter="url(#filter-1)" transform="translate(1563.000000, 83.000000)">
+                <g id="icoChat" transform="translate(21.000000, 799.000000)">
+                    <path d="M4.60386765,1.81512605 L14.3964118,1.81512605 C16.0063824,1.81512605 17.3235294,3.2457479 17.3235294,4.98463866 L17.3235294,16.1848739 L14.2041765,12.7055798 L4.60386765,12.7055798 C2.99752941,12.7055798 1.67647059,11.2794958 1.67647059,9.53606723 L1.67647059,4.98463866 C1.67647059,3.24151261 2.99361765,1.81512605 4.60386765,1.81512605 M4.60386765,0 L14.3964118,0 C15.6638235,0 16.815,0.56087395 17.6482059,1.46329412 C18.48225,2.36631933 19,3.61391597 19,4.98463866 L19,16.1848739 C19,17.1871261 18.2495,18 17.3235294,18 C16.8074559,18 16.3455882,17.7470924 16.0382353,17.3498824 L13.5017353,14.5207059 L4.60386765,14.5207059 C3.33785294,14.5207059 2.18555882,13.9601345 1.35151471,13.0571092 C0.518308824,12.1549916 0,10.9089076 0,9.53606723 L0,4.98463866 C0,3.61179832 0.517470588,2.36510924 1.35095588,1.46268908 C2.18444118,0.560571429 3.33589706,0 4.60386765,0"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

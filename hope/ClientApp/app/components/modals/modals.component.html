@@ -1,0 +1,152 @@
+<div class="modal-bgc" 
+    *ngIf="tempCase && isBackground()" 
+    (click)="cancelModal()" ></div>
+
+<div class="modal modal__profile modal__target" 
+    *ngIf="tempCase === typeOfModal.Profile" >
+
+    <p class="container__right" >
+        <img class="link" src="/assets/images/Closebutton.svg"
+        (click)="cancelModal()" >
+    </p>
+
+   <p class="modal__target modal__h" > 
+       {{ authService.userInfo.username }}
+    </p>
+
+   <p class="modal__target modal__text" > 
+       {{ authService.userInfo.email }}
+    </p>
+
+   <p class="modal__target modal__alarm" 
+   *ngIf="!authService.userInfo.email_verified"
+   (click)="openModalEvent(typeOfModal.Confirm)" > 
+       <img class="modal__target" src="/assets/images/ico-alert.svg" />
+       Confirm </p>
+
+   <p class="modal__target modal__nav" 
+   (click)="authService.signOut()" > 
+       <img class="modal__target" src="/assets/images/ico-exit.svg" />
+       Sign Out</p>
+ 
+</div>
+
+
+<div class="modal modal__confirm modal__target" 
+    *ngIf="tempCase === typeOfModal.Success" >
+
+    <p class="container__right" >
+        <img class="link" src="/assets/images/Closebutton.svg"
+        (click)="cancelModal()" >
+    </p>
+
+    <h5 class="text text__middle-small text__dark pad__without-bot" >
+        Success!
+    </h5>
+
+    <p class="text text__normal text__center text__dark text__pad-aside" >
+        Password resetting instructions were sent to
+        <br />
+        {{ authService.userInfo.email }}
+    </p>
+ 
+</div>
+
+<div class="modal modal__confirm modal__target" 
+    *ngIf="tempCase === typeOfModal.Confirm" >
+
+    <p class="container__right" >
+        <img class="link" src="/assets/images/Closebutton.svg"
+        (click)="cancelModal()" >
+    </p>
+
+    <p class="text text__normal text__center text__dark text__pad-aside" >
+        Please enter confirmation code
+        <br />
+        sent to your email below
+    </p>
+
+    <div class="" >
+        <input class="modal-input-characters pad__tb-small " maxlength='6' value='' 
+        [(ngModel)]="key"
+        (keyup)="changeKey(key)" />
+    </div>
+
+    <p class="text text__normal-smallest text__center text__dark text__pad-aside" 
+    *ngIf="!wasResendCode" >
+        Didn’t recieve confirmation email?
+        <br />
+        Check spam folder or press resend button.
+    </p>
+
+    <p class="text text__normal-smallest text__center text__dark text__pad-aside" 
+    *ngIf="wasResendCode" >
+        Confirmation email sent to you
+        <br />
+        {{ authService.userInfo.email }}
+    </p>
+
+    <app-error-msg 
+        *ngIf=" isShowenErrors "
+        [msg]="'Please enter a valid confirmation code'" >
+    </app-error-msg>  
+
+    <app-error-msg 
+        *ngIf=" serverErrorMsg "
+        [msg]=" serverErrorMsg " >
+    </app-error-msg>
+
+   <p class="modal__target pad__tb-small container__right"  > 
+       <span class="modal__clickeble" 
+       *ngIf="!wasResendCode"
+       (click)="resendConfirmationCode()" > Resend </span>
+       <span class="modal__clickeble" 
+       (click)="confirmCode()" > Confirm </span>
+   </p>
+  
+</div>
+
+
+<div class="modal modal__confirm modal__target" 
+    *ngIf="tempCase === typeOfModal.ConfirmSignUp" >
+
+    <p class="container__right" >
+        <img class="link" src="/assets/images/Closebutton.svg"
+        (click)="cancelModal()" >
+    </p>
+
+    <h5 class="text text__middle-small text__dark pad__without-bot" >
+        Thanks you for signing up!
+    </h5>
+
+    <p class="text text__normal text__center text__dark text__pad-aside" >
+        Please enter confirmation code
+        <br />
+        sent to your email below
+    </p>
+
+    <div class="" >
+        <input class="modal-input-characters pad__tb-small " maxlength='6' value='' 
+        [(ngModel)]="key"
+        (keyup)="changeKey(key)" />
+    </div>
+
+    <app-error-msg 
+        *ngIf=" isShowenErrors "
+        [msg]="'Please enter a valid confirmation code'" >
+    </app-error-msg>  
+
+    <app-error-msg 
+        *ngIf=" serverErrorMsg "
+        [msg]=" serverErrorMsg " >
+    </app-error-msg>
+
+
+   <p class="modal__target pad__tb-small container__right"  > 
+       <span class="modal__clickeble" 
+       (click)="cancelModal()" > Later </span>
+       <span class="modal__clickeble" 
+       (click)="confirmCode()" > Confirm </span>
+   </p>
+ 
+</div>

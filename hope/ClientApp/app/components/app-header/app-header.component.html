@@ -1,0 +1,56 @@
+    <div 
+        #header
+        [class.auth-header__second]="secondViewOfHeader">
+
+
+        <div class="main-header"
+            [class.main-header__second]="secondView || secondViewOfHeader"
+            [class.main-header__form]="secondView"
+            >
+
+            <img class="main-header__img" 
+            [routerLink]="['/']"
+[src]=" secondView || secondViewOfHeader ? '/assets/images/ico_logo_pink.svg' : '/assets/images/ico_logo_white.svg' "
+            />
+
+            <div class="main-header__user-block" 
+            *ngIf="!authService.userInfo.username" >
+
+                <button class="button" 
+                [class.button-pink]="secondView || secondViewOfHeader"
+                [routerLink]="[btn?.route]" > 
+                    {{ btn?.text }}
+                </button>
+            </div>
+
+            <div class="main-header__user-block" 
+                *ngIf="authService.userInfo.username"  
+                 >
+
+                <div class="modal__target"
+                    (click)="toggleUserModal(!isUserModalVisible)" >
+
+                <img 
+                class="modal__target main-header__user-block__el main-header__user-block__foto"
+[src]=" secondView || secondViewOfHeader ? '/assets/images/ico-profile-blue.svg' : '/assets/images/ico-profile-white.svg' " 
+                 />
+                <span 
+                class="modal__target main-header__user-block__el main-header__user-block__name mob-hidden" 
+[class.main-header__user-block__el-second]="secondView || secondViewOfHeader" > 
+                    {{ authService.userInfo.email }} </span>
+                <img 
+                class="modal__target main-header__user-block__el main-header__user-block__toggle mob-hidden" 
+[src]=" secondView || secondViewOfHeader ? '/assets/images/ico-drop-down-blue.svg' : '/assets/images/ico-drop-down.svg' " 
+                 />
+
+                </div> 
+
+                <app-modals *ngIf="isUserModalVisible" 
+                [tempCase]="typeOfModal.Profile"
+                (openModal)="openModal($event)" ></app-modals>
+                
+            </div>
+
+        </div>
+
+    </div>

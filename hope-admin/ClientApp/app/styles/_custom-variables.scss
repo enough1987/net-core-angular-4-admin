@@ -1,0 +1,206 @@
+@mixin btn-color($btn-color, $text-color: white) {
+    background-color: $btn-color;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: bold;
+    text-align: center;
+    color: $text-color;
+    border-color: $btn-color;
+    padding: 8px 30px;
+
+    .icon {
+      fill: $text-color;
+    }
+    
+    .icon {
+      display: inline-block;
+      vertical-align: -2px;
+      margin-right: 4px;
+    }
+
+    &:hover,
+    &:focus {
+        color: $text-color;
+        background-color: darken($btn-color, 6%);
+        border-color: $btn-color;
+    }
+
+    &:focus {
+      border-color: $btn-color;     
+      outline: none;
+      background-color: darken($btn-color, 10%);
+      box-shadow: 0 0 2px 1px transparentize(darken($btn-color, 10%), 0.5);
+    }
+
+    &:disabled,
+    &.disabled,
+    &--disabled {
+      opacity: 0.4;
+    }
+}
+
+
+// Core Admin Variables
+
+$enable-sidebar-nav-rounded: false;
+
+$border-color: #efefef;
+$layout-transition-speed: .25s;
+$bg-color: #f4f3f3;
+
+$btn-blue: #00a0e5;
+$btn-pink: #fe8a8a;
+$invalid: #fd8a8a;
+$img-bg-color: white;
+$text-light-color: #c5c5c5;
+$gift-blue: #39a3dd;
+$gift-pink: #ff3e7d;
+$gift-green: #30b198;
+$input-color: #f7f7f7;
+$custom-select-color: red;
+
+
+// Social Colors
+
+$facebook: #3b5998;
+$twitter: #00aced;
+$linkedin: #4875b4;
+$google-plus: #d34836;
+$flickr: #ff0084;
+$tumblr: #32506d;
+$xing: #026466;
+$github: #4183c4;
+$html5: #e34f26;
+$openid: #f78c40;
+$stack-overflow: #fe7a15;
+$youtube: #b00;
+$css3: #0170ba;
+$dribbble: #ea4c89;
+$google-plus: #bb4b39;
+$instagram: #517fa4;
+$pinterest: #cb2027;
+$vk: #45668e;
+$yahoo: #400191;
+$behance: #1769ff;
+$dropbox: #007ee5;
+$reddit: #ff4500;
+$spotify: #7ab800;
+$vine: #00bf8f;
+$foursquare: #1073af;
+$vimeo: #aad450;
+
+// Navbar
+
+$navbar-height:                     50px;
+$navbar-bg:                         $brand-primary;
+$navbar-border:                     0;
+$navbar-brand-width:                220px;
+$navbar-brand-bg:                   darken($brand-primary,10%);
+$navbar-brand-logo:                 url('/assets/img/logo.png');
+$navbar-brand-logo-size:            90px auto;
+$navbar-brand-border:               0;
+
+$navbar-color:                      #fff;
+$navbar-hover-color:                darken($navbar-color, 10%);
+$navbar-active-color:               darken($navbar-color, 20%);
+$navbar-disabled-color:             lighter($navbar-color, 20%);
+
+// Sidebar
+
+$sidebar-width:                     220px;
+$mobile-sidebar-width:              220px;
+$sidebar-padding:                   0;
+$sidebar-minimized-width:           50px;
+$sidebar-minimized-height:          $sidebar-minimized-width;
+$sidebar-compact-width:             50px;
+$sidebar-compact-height:            $sidebar-compact-width;
+$sidebar-color:                     #fff;
+$sidebar-bg:                        $gray-dark;
+$sidebar-header-bg:                 rgba(0,0,0,.2);
+$sidebar-footer-bg:                 rgba(0,0,0,.2);
+$sidebar-borders:                   0;
+
+// Sidebar Navigation
+
+$sidebar-nav-color:                 #fff;
+$sidebar-nav-title-padding-y:       .95rem;
+$sidebar-nav-title-padding-x:       1rem;
+$sidebar-nav-title-color:           $text-muted;
+$sidebar-nav-link-padding-y:        .75rem;
+$sidebar-nav-link-padding-x:        1rem;
+$sidebar-nav-link-color:            #fff;
+$sidebar-nav-link-bg:               transparent;
+$sidebar-nav-link-icon-color:       $text-muted;
+
+$sidebar-nav-link-borders:          0;
+$sidebar-nav-link-hover-color:      #fff;
+$sidebar-nav-link-hover-bg:         darken($sidebar-bg, 10%);
+$sidebar-nav-link-hover-icon-color: #fff !important;
+
+$sidebar-nav-link-hover-borders:    0;
+$sidebar-nav-link-active-color:     #fff;
+$sidebar-nav-link-active-bg:        darken($sidebar-bg, 10%);
+$sidebar-nav-link-active-icon-color: $brand-primary;
+
+$sidebar-nav-link-active-borders:   0;
+
+$sidebar-nav-dropdown-color:        #fff;
+$sidebar-nav-dropdown-bg:           darken($sidebar-bg, 5%);
+$sidebar-nav-dropdown-borders:      0;
+
+// Top Navigation
+
+$top-nav-bg:                        #fff;
+$top-nav-color:                     $body-color;
+$top-nav-borders: (
+  bottom: (
+    size:                           1px,
+    style:                          solid,
+    color:                          $border-color
+  )
+);
+$top-nav-ul-borders: (
+  all: (
+    size:                           1px,
+    style:                          solid,
+    color:                          $border-color
+  )
+);
+
+$top-nav-hover-color:               #fff;
+$top-nav-hover-bg:                  $brand-primary;
+$top-nav-active-color:              #fff;
+$top-nav-active-bg:                 $brand-primary;
+$top-nav-height:                    $navbar-height - 15px;
+
+// Breadcrumb
+
+$breadcrumb-borders:                0;
+
+// Aside
+
+$aside-menu-width:                  250px;
+$aside-menu-color:                  $gray-dark;
+$aside-menu-bg:                     #fff;
+$aside-menu-borders: (
+  left: (
+    size:                           1px,
+    style:                          solid,
+    color:                          $border-color
+  )
+);
+
+$aside-menu-nav-padding-y:          .75rem;
+$aside-menu-nav-padding-x:          1rem;
+
+// Footer
+
+$footer-height:                     50px;
+$footer-bg:                         $gray-dark;
+$footer-color:                      #fff;
+$footer-borders:                    0;
+
+// Cards
+
+$card-icon-bg:                      transparent;
+$card-icon-color:                   $body-color;

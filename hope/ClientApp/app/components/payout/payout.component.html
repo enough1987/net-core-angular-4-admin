@@ -1,0 +1,366 @@
+<div class="main-container-sidebar"
+    *ngIf=" id == 'init' " >
+    
+    <header class="sidebar-header">
+<!--[routerLink]="['/payout/back']" -->
+        <button class="small-btn icon icon--back"
+        (click)="goBack()"
+        ></button>
+        <h1 class="sidebar-title">Income</h1>
+        <button class="small-btn icon icon--history"
+[routerLink]="['/payout/history']"  ></button>
+    </header>
+
+        <div class="balance">
+            <p>Current Balance (<span class="balance__currency">USD</span>)</p>
+            <p class="balance__amount"><span class="icon icon--currency icon--usd"></span>
+                {{ paypalService.balance || 1000 }} 
+            </p>
+        </div>
+    <div class="sidebar-content">
+        <div class="income-faq">
+            <ul class="faq faq--income">
+                <li class="faq__item">
+                    <p class="faq__question">How to earn money?</p>
+                    <p class="faq__answer">When you receive gifts, your 
+                        balance will update according to the gifts value.</p>
+                </li>
+                <li class="faq__item">
+                    <p class="faq__question">When can I do cash out?</p>
+                    <p class="faq__answer">Once your balance reaches 
+                        $200 you can withdrawal your earnings.</p>
+                </li>
+                <li class="faq__item">
+                    <p class="faq__question">How much can I earn?</p>
+                    <p class="faq__answer">It's up to you! Cash out 
+                        is up to $600 per day.</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <footer class="sidebar-footer">
+        <div class="button__wrapper">
+            <a 
+[routerLink]="['/payout/login']" 
+            class="button button-pink button-pink-bgc button--whithdraw-confirm">Cash out</a>
+        </div>
+        <p class="sidebar-footer__notification">By pressing Cash Out button, you agree to&nbsp;
+            <a class="notification__link" 
+[routerLink]="['/payout/terms']"
+             >Withdrawal Terms</a></p>
+    </footer>
+
+</div>
+
+
+
+<div class="main-container-sidebar"
+*ngIf=" id == 'login' " >
+
+    <header class="sidebar-header">
+        <button class="small-btn icon icon--back"
+[routerLink]="['/payout/init']"   ></button>
+        <h1 class="sidebar-title">Withdraw</h1>
+    </header>
+
+        <div class="balance">
+            <p>Current Balance (<span class="balance__currency">USD</span>)</p>
+            <p class="balance__amount"><span class="icon icon--currency icon--usd"></span>
+{{ paypalService.balance || 1000 }}
+            </p>
+        </div>
+    <div class="sidebar-content">
+        <div class="withdraw">
+            <p class="withdraw__p">Choose amount to withdraw</p>
+            <ul  class="withdraw__options-list">
+                <li class="withdraw__option">
+                    <input class="withdraw__amount-radio-btn" name="amount" type="radio" value="200" id="amount" 
+#amount
+(click)="login(amount.value)" >
+                    <label for="amount" class="withdraw__amount">
+                        <span class="icon icon--currency icon--usd">USD</span>
+                        <span>200</span>
+                        </label>
+                </li>
+                <li class="withdraw__option">
+                    <input class="withdraw__amount-radio-btn" name="amount" type="radio" value="300" id="amount2" 
+#amount2 
+(click)="login(amount2.value)" >
+                    <label for="amount2" class="withdraw__amount">
+                        <span class="icon icon--currency icon--usd">USD</span>
+                        <span>300</span>
+                    </label>
+                </li>
+                <li class="withdraw__option">
+                    <input class="withdraw__amount-radio-btn" name="amount" type="radio" value="400" id="amount3" 
+#amount3
+(click)="login(amount3.value)"  >
+                    <label for="amount3" class="withdraw__amount">
+                        <span class="icon icon--currency icon--usd">USD</span>
+                        <span>400</span>
+                    </label>
+                </li>
+                <li class="withdraw__option">
+                    <input class="withdraw__amount-radio-btn" name="amount" type="radio" value="400" id="amount4" disabled
+#amount4 
+(click)="login(amount4.value)" >
+                    <label for="amount4" class="withdraw__amount">
+                        <span class="icon icon--currency icon--usd">USD</span>
+                        <span>500</span>
+                    </label>
+                </li>
+                <li class="withdraw__option">
+                    <input class="withdraw__amount-radio-btn" name="amount" type="radio" value="100" id="amount5" disabled
+#amount5
+(click)="login(amount5.value)" >
+                    <label for="amount5" class="withdraw__amount">
+                        <span class="icon icon--currency icon--usd">USD</span>
+                        <span>600</span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+</div>
+
+
+<div class="main-container-sidebar"
+*ngIf=" id == 'payout' " >
+    <header class="sidebar-header">
+        <button  class="small-btn icon icon--back"
+[routerLink]="['/payout/init']" ></button>
+        <h1 class="sidebar-title">Withdraw Confirmation</h1>
+    </header>
+    <div class="sidebar-content">
+        <div class="income-history-item income-history-item--withdraw income-history-item--current">
+            <div class="income-history-item__detail  income-history-item__detail--paypal">
+                <p class="income-history-item__detail-name">PayPal Account</p>
+                <p class="income-history-item__detail-value">
+{{ paypalService.userinfo?.email }}
+                </p>            
+            </div>
+            <div class="income-history-item__detail  income-history-item__detail--amount">
+                <p class="income-history-item__detail-name">Withdraw Sum</p>
+                <p class="income-history-item__detail-value"><span class="income-history-item__currency">$</span>
+                    <span class="income-history-item__amount">
+{{ paypalService.amount }}
+            </span></p>            
+            </div>
+        </div>
+    </div>
+    <footer class="sidebar-footer">
+        <div class="button__wrapper">
+            <a class="button button-pink button-pink-bgc button--whithdraw-confirm" 
+(click)="payout()" > Continue </a>
+        </div>
+    </footer>
+</div>
+
+
+
+
+<div class="main-container-sidebar"
+    *ngIf=" id == 'historyitem1' " >
+
+    <header class="sidebar-header">
+        <button class="small-btn icon icon--back"
+[routerLink]="['/payout/history']" ></button>
+        <h1 class="sidebar-title"><span class="income-history-item__date">Today</span> at 
+            <span class="income-history-item__time"> 
+{{ '10:21 АМ' }}
+            </span></h1>
+
+    </header>
+    <div class="sidebar-content" >
+        <div class="income-history-item__detail  income-history-item__detail--paypal">
+            <p class="income-history-item__detail-name">PayPal Account</p>
+            <p class="income-history-item__detail-value">
+{{ 'aleksandr@gmail.com' }} 
+            </p>            
+        </div>
+        <div class="income-history-item__detail  income-history-item__detail--amount">
+            <p class="income-history-item__detail-name">Withdraw Sum</p>
+            <p class="income-history-item__detail-value"><span class="income-history-item__currency">$</span>
+                <span class="income-history-item__amount">
+{{ 200 }}
+            </span></p>            
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<div class="main-container-sidebar"
+*ngIf=" id == 'terms' " >
+    <header class="sidebar-header">
+        <button class="small-btn icon icon--back"
+[routerLink]="['/payout/init']" ></button>
+        <h1 class="sidebar-title">Withdrawal Terms</h1>
+    </header>
+    <div class="sidebar-content">
+        <h2 class="withdraw-terms__subtitle">Fabulive Withdrawal Rules</h2>
+        <p class="withdraw-terms__p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Maecenas sit amet ultrices massa, et imperdiet mi. Ut at pulvinar sapien. Praesent risus nunc, 
+            condimentum eget commodo non, luctus id neque.</p>
+        <p class="withdraw-terms__p">Morbi euismod fermentum ante non bibendum. Integer mauris eros, aliquam 
+            sit amet fringilla id, venenatis et lacus. Duis elementum nisi at felis pharetra tempus. Vivamus 
+            malesuada mauris eget nibh porta facilisis. Integer eu elit a sapien vestibulum luctus non in erat. 
+            Ut imperdiet sollicitudin urna, dapibus ornare metus dictum id. Mauris a fermentum diam.</p>
+    </div>
+
+</div>
+
+
+
+
+
+<div class="main-container-sidebar"
+    *ngIf=" id == 'historyitem2' " >
+
+    <header class="sidebar-header">
+        <button class="small-btn icon icon--back"
+[routerLink]="['/payout/history']"></button>
+        <h1 class="sidebar-title"><span class="income-history-item__date">27 Jun</span> at <span class="income-history-item__time">9:33 АМ</span></h1>
+    </header>
+    <div class="sidebar-content">
+        <div class="income-history-item__detail  income-history-item__detail--broadcast-title">
+            <p class="income-history-item__detail-name">Broadcast  Title</p>
+            <p class="income-history-item__detail-value">Look Hot in 5 Minutes</p>            
+        </div>
+        <div class="income-history-item__detail  income-history-item__detail--category">
+            <p class="income-history-item__detail-name">Category</p>
+            <p class="income-history-item__detail-value">Basics of Makeup</p>            
+        </div>
+        <div class="income-history-item__detail">
+            <p class="income-history-item__detail-name">Details</p>
+            <ul class="broadcast-details">
+                <li class="broadcast-details__item">
+                    <p  class="broadcast-details__item-name">Broadcast Time</p>
+                    <p  class="broadcast-details__item-value">1h 5m</p>
+                </li>
+                <li class="broadcast-details__item">
+                    <p  class="broadcast-details__item-name">Viewers</p>
+                    <p  class="broadcast-details__item-value">1,46K</p>
+                </li>
+                <li class="broadcast-details__item">
+                    <p  class="broadcast-details__item-name">Followers</p>
+                    <p  class="broadcast-details__item-value">18</p>
+                </li>
+                <li class="broadcast-details__item">
+                    <p  class="broadcast-details__item-name">Likes</p>
+                    <p  class="broadcast-details__item-value">28,8K</p>
+                </li>
+                <li class="broadcast-details__item  broadcast-details__item--income  broadcast-details__item--underlined">
+                    <p  class="broadcast-details__item-name">Income</p>
+                    <p  class="broadcast-details__item-value">
+                        <span>1,000</span>
+                        <span class="icon icon--currency icon--usd">USD</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+<div class="main-container-sidebar"
+    *ngIf=" id == 'history' " >
+
+    <header class="sidebar-header">
+        <button class="small-btn icon icon--back"
+[routerLink]="['/payout/init']" ></button>
+        <h1 class="sidebar-title">History</h1>
+    </header>
+    <div class="sidebar-content  income-history">
+            <p   class="income-history__month">June 2017</p>
+            <ul class="income-history">
+                <li  class="income-history__item    income-history__item--underlined">
+                    <a   class="income-history__link" href="" title="More details"
+                    [routerLink]="['/payout/historyitem1']">
+                        <p  class="income-history__date">Today, 10:21AM</p>
+                        <p  class="income-history__balance">
+                            <span>- 600</span>
+                            <span class="icon icon--currency icon--usd">USD</span>
+                        </p>
+                    </a>
+                </li>
+                <li  class="income-history__item    income-history__item--underlined">
+                    <a class="income-history__link" href="" title="More details"
+                    [routerLink]="['/payout/historyitem2']">
+                        <p  class="income-history__date">27 Jun, 9:33PM</p>
+                        <p  class="income-history__balance">
+                            <span>+ 1,000</span>
+                            <span class="icon icon--currency icon--usd">USD</span>
+                        </p>
+                    </a>
+                </li>
+            </ul>
+
+            <p   class="income-history__month">May 2017</p>
+            <ul class="income-history">
+                <li  class="income-history__item    income-history__item--underlined">
+                    <a class="income-history__link" href="" title="More details">
+                        <p  class="income-history__date">23 May, 3:34PM</p>
+                        <p  class="income-history__balance">
+                            <span>- 200</span>
+                            <span class="icon icon--currency icon--usd">USD</span>
+                        </p>
+                    </a>
+                </li>
+                <li  class="income-history__item    income-history__item--underlined">
+                    <a class="income-history__link" href="" title="More details">
+                        <p  class="income-history__date">21 May, 4:36PM</p>
+                        <p  class="income-history__balance">
+                            <span>- 600</span>
+                            <span class="icon icon--currency icon--usd">USD</span>
+
+                        </p>
+                    </a>
+                </li>
+                <li  class="income-history__item    income-history__item--underlined">
+                    <a class="income-history__link" href="" title="More details">
+                        <p  class="income-history__date">20 May, 1:23AM</p>
+                        <p  class="income-history__balance">
+                            <span>+ 800</span>
+                            <span class="icon icon--currency icon--usd">USD</span>
+                        </p>
+                    </a>
+                </li>
+            </ul>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

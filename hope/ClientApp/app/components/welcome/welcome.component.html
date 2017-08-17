@@ -1,0 +1,30 @@
+
+    <div class="main-container">
+
+        <p class="text-center__big" >
+            Welcome to Fabulive
+        </p>
+
+       <div class="circle" >
+
+           <img class="circle-in-img" src="/assets/images/ico_profile_white_la.svg" />
+
+            <input type="file" class="hidden" 
+            #fileFoto 
+            (change)="changeFoto($event)" />
+            <img class="circle circle-small circle-small-img" src="/assets/images/ico_plus_white_mid.svg" 
+            (click)="fileFoto.click()" />
+
+       </div>
+
+        <p class="text-center__big" >
+            Add Profile Photo
+        </p>
+
+        <p class="">
+            Complete the information:
+        </p>
+
+
+
+    </div>

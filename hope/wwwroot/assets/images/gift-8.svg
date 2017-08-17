@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="51px" height="67px" viewBox="0 0 51 67" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>C4181849-3DDD-4DFD-8811-F0E90F1C24CC</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <path d="M0,0 L1206,0 L1206,763.001511 C1206,769.628094 1200.62314,775 1193.9906,775 L12.0093977,775 C5.37679049,775 0,769.637212 0,763.001511 L0,0 Z" id="path-1"></path>
+        <path d="M32,0 L1238,0 L1238,104 L1238,104 C1238,110.627417 1232.62742,116 1226,116 L32,116 L32,0 Z" id="path-3"></path>
+        <filter x="-1.2%" y="-8.6%" width="102.3%" height="124.1%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="0" dy="4" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="4" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.925490196   0 0 0 0 0.937254902   0 0 0 0 0.945098039  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-5" x="0" y="0" width="84" height="84"></rect>
+    </defs>
+    <g id="Fabulive---Broadcast-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="fab-broadcast-not-signed" transform="translate(-940.000000, -825.000000)">
+            <rect id="Rectangle-5" fill="#FFFFFF" x="0" y="0" width="1920" height="1574"></rect>
+            <rect id="bg" fill="#ECEFF1" opacity="0.300000012" x="0" y="0" width="1920" height="1574"></rect>
+            <g id="Broadcast" transform="translate(357.000000, 83.000000)">
+                <g id="Video" transform="translate(0.000000, 56.000000)">
+                    <g id="imgBackground">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#000000" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+            </g>
+            <g id="Gift-Panel" transform="translate(325.000000, 800.000000)">
+                <g id="Rectangle-4" transform="translate(635.000000, 58.000000) scale(-1, 1) translate(-635.000000, -58.000000) ">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                </g>
+                <g id="Gifts" transform="translate(0.000000, 15.000000)">
+                    <g id="icoBrush" transform="translate(597.714286, 1.000000)">
+                        <g id="Rectangle-10-Copy-7" opacity="0.300000012">
+                            <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-5"></use>
+                            <rect stroke="#F59FBC" stroke-width="1" x="0.5" y="0.5" width="83" height="83"></rect>
+                        </g>
+                        <g transform="translate(18.000000, 9.000000)" id="Group-10-Copy-2">
+                            <g>
+                                <polygon id="Fill-69" fill="#ED9964" points="35.9271875 5.381875 28.10125 2.1259375 22.095625 23.559375 26.1234375 25.5203125"></polygon>
+                                <polygon id="Fill-70" fill="#F4B28C" points="20.735 0.2003125 28.10125 2.1259375 22.095625 23.559375 18.068125 21.59875"></polygon>
+                                <polygon id="Fill-71" fill="#D27F4B" points="35.9271875 5.381875 43.316875 9.533125 30.1509375 27.4809375 26.1234375 25.5203125"></polygon>
+                                <polygon id="Fill-72" fill="#B4653A" points="49.37625 14.1434375 43.316875 9.533125 30.1509375 27.4809375 34.17875 29.441875"></polygon>
+                                <path d="M34.8040625,31.5684375 C35.2,30.7553125 34.86125,29.7740625 34.048125,29.378125 L18.1984375,21.6621875 C17.3853125,21.2665625 16.4040625,21.6053125 16.0084375,22.418125 L15.273125,23.928125 C14.8775,24.74125 15.21625,25.7225 16.0290625,26.118125 L31.8790625,33.8340625 C32.691875,34.23 33.673125,33.89125 34.0690625,33.0784375 L34.8040625,31.5684375 Z" id="Fill-73" fill="#FCB92A"></path>
+                                <path d="M34.4328125,32.33125 L34.0690625,33.0784375 C33.673125,33.89125 32.691875,34.23 31.8790625,33.8340625 L16.0290625,26.118125 C15.21625,25.7225 14.8775,24.74125 15.273125,23.928125 L15.636875,23.1809375 L34.4328125,32.33125 Z" id="Fill-74" fill="#F79E17"></path>
+                                <polygon id="Fill-75" fill="#6EC2F0" points="31.5525 33.6990625 16.336875 26.291875 0.215 59.4081562 15.430625 66.8154375"></polygon>
+                                <polygon id="Fill-76" fill="#2694D0" points="31.5525 33.6990625 23.9446875 29.9953125 7.8228125 63.1117812 15.430625 66.8154375"></polygon>
+                                <path d="M17.90625,37.850625 C18.4475,36.7390625 17.984375,35.3975 16.8728125,34.85625 C15.76125,34.3153125 14.4196875,34.7784375 13.87875,35.89 L8.214375,47.5253125 C7.673125,48.636875 8.13625,49.9784375 9.2478125,50.5196875 C10.3590625,51.060625 11.7009375,50.5975 12.241875,49.4859375 L17.90625,37.850625 Z" id="Fill-77" fill="#FFFFFF"></path>
+                                <path d="M9.4096875,55.3038125 C9.9509375,54.1923438 9.4878125,52.8506875 8.37625,52.3096875 C7.2646875,51.7684375 5.923125,52.2315625 5.3821875,53.3430625 C4.8409375,54.4545313 5.3040625,55.7961875 6.415625,56.3372813 C7.526875,56.878375 8.86875,56.4152813 9.4096875,55.3038125 Z" id="Fill-78" fill="#FFFFFF"></path>
+                            </g>
+                        </g>
+                        <g id="Gifts-number-Copy-7" transform="translate(3.000000, 3.000000)">
+                            <circle id="Oval-6" fill="#F59FBC" cx="10" cy="10" r="10"></circle>
+                            <text id="20" font-family="OpenSans-SemiBold, Open Sans" font-size="12" font-weight="500" fill="#FFFFFF">
+                                <tspan x="3.15039062" y="14">20</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+            <g id="Group" transform="translate(44.000000, -4.000000)">
+                <g id="Header-signed" transform="translate(0.000000, 8.000000)"></g>
+            </g>
+        </g>
+    </g>
+</svg>

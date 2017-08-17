@@ -1,0 +1,265 @@
+       
+<app-header 
+[btn]="tempCase === templateCase.SignUp ? { route: '/sign-in' , text : 'Sign in' } : { route: '/sign-up' , text : 'Sign up' }" >
+</app-header>
+
+        <!-- sign-in template -->
+        <div class="main-container-in main-container-in-small pad__auth-form" 
+        *ngIf="tempCase === templateCase.SignIn" >
+
+            <div class="container__after-header" >
+
+
+            <h5 class="text text__middle text-left text__dark pad__without-bot cntr__row">  
+                Sign In to Fabulive
+            </h5>
+
+            <p class="text text__normal-small text__left text__dark cntr__row">
+                Enter your details
+            </p>
+
+            <form class="pad__tb-middle" autocomplete="off" novalidate
+                [formGroup]="formData" > 
+
+                <div class="btn-container input-contaner " 
+[class.input-contaner-error]="formData.controls.email.invalid && ( formData.controls.email.touched || isShowenErrors )" >
+                    <label class="button__placeholder button__placeholder-dirty" 
+                    *ngIf="formData.get('email').value"
+                    > Email </label>
+                    <label class="button__placeholder" 
+                    *ngIf="!formData.get('email').value"
+                    > Email </label>
+                    <input class="input input-dirty" type="text" required 
+                    formControlName="email" />
+                    <img class="input-img-second" 
+                    [class.hidden]="!formData.get('email').value"
+                    src="/assets/images/ico-clear-sm.svg"  
+                    (click)=" formData.controls.email.reset() " />  
+                </div>
+                <app-error-msg 
+*ngIf=" formData.controls.email.invalid && ( formData.controls.email.touched || isShowenErrors ) "
+                    [msg]="'Please enter a valid email address'" ></app-error-msg>    
+
+                <div class="btn-container input-contaner " 
+[class.input-contaner-error]="formData.controls.password.invalid && ( formData.controls.password.touched || isShowenErrors ) "  >
+                    <label class="button__placeholder button__placeholder-dirty" 
+                    *ngIf="formData.get('password').value"
+                    > Password </label>
+                   <label class="button__placeholder" 
+                    *ngIf="!formData.get('password').value"
+                    > Password </label>
+                    <input class="input input-dirty" required
+                    autocomplete="new-password"
+                    [type]=" isShowenPass ? 'text' : 'password' "
+                    formControlName="password" />
+                    <img class="input-img" 
+                    [class.hidden]="!formData.get('password').value"
+                    [src]=" isShowenPass ? '/assets/images/ico_eye_close_sm.svg' : '/assets/images/ico_eye_open_sm.svg' "  
+                    (click)=" toggleShowenPass() " />  
+                    <img class="input-img-second" 
+                    [class.hidden]="!formData.get('password').value"
+                    src="/assets/images/ico-clear-sm.svg"  
+                    (click)=" formData.controls.password.reset() " />  
+                    <span class="input-link link link-light" 
+                    [class.hidden]="formData.get('password').value"
+                    [routerLink]="['/sign-in-forgot']" >
+                        FORGOT?
+                    </span>            
+                </div>
+                <app-error-msg 
+*ngIf=" formData.controls.password.invalid && ( formData.controls.password.touched || isShowenErrors ) "
+                    [msg]="'Please enter combination of 6-35 numbers, letters or punctuation marks.'" ></app-error-msg>    
+                
+            </form>      
+
+
+            <app-error-msg 
+*ngIf=" serverErrorMsg && isShowenErrors "
+                    [msg]="serverErrorMsg" ></app-error-msg>  
+
+                    
+            <div class="pad__tb-middle pad__t-big">
+                <button class="button button-pink-bgc button-big width-middle-plass"
+                (click)=" signIn() " >
+                    Sign In
+                </button>
+            </div>
+
+
+            </div>        
+
+        </div> <!-- end of sign-in template -->
+
+
+        <!-- sign-up template -->
+        <div  class="main-container-in main-container-in-small pad__auth-form"
+        *ngIf="tempCase === templateCase.SignUp" >
+
+            <div class="container__after-header" >
+
+
+            <h5 class="text text__middle text-left text__dark pad__without-bot cntr__row">  
+                Sign up to Fabulive 
+            </h5>
+
+            <p class="text text__normal-small text__left text__dark cntr__row">
+                Get Started Now
+            </p>
+
+
+            <form class="pad__tb-middle" autocomplete="off" novalidate
+                [formGroup]="formData" >
+
+                <div class="btn-container input-contaner " 
+[class.input-contaner-error]=" formData.controls.fullName.invalid && ( formData.controls.fullName.touched || isShowenErrors ) " >
+                    <label class="button__placeholder button__placeholder-dirty" 
+                    *ngIf="formData.get('fullName').value"
+                    > Full Name </label>
+                    <label class="button__placeholder" 
+                    *ngIf="!formData.get('fullName').value"
+                    > Full Name </label>
+                    <input class="input input-dirty" type="text" required 
+                    formControlName="fullName" />
+                    <img class="input-img-second" 
+                    [class.hidden]="!formData.get('fullName').value"
+                    src="/assets/images/ico-clear-sm.svg"  
+                    (click)=" formData.controls.fullName.reset() " />  
+                </div>
+                <app-error-msg 
+*ngIf=" formData.controls.fullName.invalid && ( formData.controls.fullName.touched || isShowenErrors ) "
+                    [msg]="'Please enter combination of 3-30 numbers, letters.'" ></app-error-msg>  
+
+                <div class="btn-container input-contaner " 
+[class.input-contaner-error]="formData.controls.email.invalid && ( formData.controls.email.touched || isShowenErrors ) " >
+                    <label class="button__placeholder button__placeholder-dirty" 
+                    *ngIf="formData.get('email').value"
+                    > Email </label>
+                    <label class="button__placeholder" 
+                    *ngIf="!formData.get('email').value"
+                    > Email </label>
+                    <input class="input input-dirty" type="text" required 
+                    formControlName="email" />
+                    <img class="input-img-second" 
+                    [class.hidden]="!formData.get('email').value"
+                    src="/assets/images/ico-clear-sm.svg"  
+                    (click)=" formData.controls.email.reset() " />  
+                </div>
+                <app-error-msg 
+*ngIf=" formData.controls.email.invalid && ( formData.controls.email.touched || isShowenErrors ) "
+                    [msg]="'Please enter a valid email address'" ></app-error-msg>  
+
+                <div class="btn-container input-contaner " 
+[class.input-contaner-error]="formData.controls.password.invalid && ( formData.controls.password.touched || isShowenErrors )" >
+                    <label class="button__placeholder button__placeholder-dirty" 
+                    *ngIf="formData.get('password').value"
+                    > Password </label>
+                    <label class="button__placeholder" 
+                    *ngIf="!formData.get('password').value"
+                    > Password </label>
+                    <input class="input input-dirty" required
+                    autocomplete="new-password"
+                    [type]=" isShowenPass ? 'text' : 'password' " 
+                    formControlName="password" />
+                    <img class="input-img" 
+                    [src]=" isShowenPass ? '/assets/images/ico_eye_close_sm.svg' : '/assets/images/ico_eye_open_sm.svg' "  
+                    [class.hidden]="!formData.get('password').value"
+                    (click)=" toggleShowenPass() " /> 
+                    <img class="input-img-second" 
+                    [class.hidden]="!formData.get('password').value"
+                    src="/assets/images/ico-clear-sm.svg"  
+                    (click)=" formData.controls.password.reset() " />                
+                </div>
+                <app-error-msg 
+*ngIf=" formData.controls.password.invalid && ( formData.controls.password.touched || isShowenErrors ) "
+                    [msg]="'Please enter combination of 6-35 numbers, letters or punctuation marks.'" ></app-error-msg>    
+  
+            </form>    
+
+                <app-error-msg 
+*ngIf=" serverErrorMsg && isShowenErrors "
+                    [msg]="serverErrorMsg" ></app-error-msg>    
+
+            <div class="pad__tb-middle pad__t-big">
+                <button class="button button-pink-bgc button-big width-middle-plass"
+                (click)=" signUp() " >
+                    Sign Up
+                </button>
+            </div>
+
+             <h5 class="text text__normal text__dark pad__without-bot width-middle-plass" >
+               <img class="img__chackbox"
+(click)="toggleSubscribeOnUpdates()"
+[src]=" subscribeOnUpdates ? '/assets/images/ico-checked.svg' : '/assets/images/icoNotChecked.svg' " />
+                Subscribe on our email updates
+            </h5>
+
+            <p class="text text__normal text__center text__dark text__pad-aside width-middle-plass" >
+                By signing up you agree to 
+                <span class="link" 
+                [routerLink]="['/info/terms']" > Terms of Use </span>
+                and 
+                <span class="link" 
+                [routerLink]="['/info/policy']" > Privacy Policy </span>
+            </p> 
+
+
+            </div>       
+
+        </div> <!-- end of sign-up template -->
+
+
+        <!-- sign-in-forgot template -->
+        <div  class="main-container-in main-container-in-small pad__auth-form"
+        *ngIf="tempCase === templateCase.SignInForgot" >
+
+            <div class="container__after-header" >
+
+
+            <h5 class="text text__middle text-left text__dark pad__without-bot cntr__row">  
+                Forgot your password?
+            </h5>
+
+            <p class="text text__normal-small text__left text__dark cntr__row">
+                Please enter your email address and
+                we’ll get you back on track
+            </p>
+
+            <form class="pad__tb-middle" autocomplete="off" novalidate
+                [formGroup]="formData" > 
+
+                <div class="btn-container input-contaner " 
+[class.input-contaner-error]="formData.controls.email.invalid && ( formData.controls.email.touched || isShowenErrors ) " >
+                    <label class="button__placeholder button__placeholder-dirty" 
+                    *ngIf="formData.get('email').value"
+                    > Email </label>
+                    <label class="button__placeholder" 
+                    *ngIf="!formData.get('email').value"
+                    > Email </label>
+                    <input class="input input-dirty" type="text" required 
+                    formControlName="email" />
+                    <img class="input-img-second" 
+                    [class.hidden]="!formData.get('email').value"
+                    src="/assets/images/ico-clear-sm.svg"  
+                    (click)=" formData.controls.email.reset() " />  
+                </div>
+                <app-error-msg 
+*ngIf=" formData.controls.email.invalid && ( formData.controls.email.touched || isShowenErrors ) "
+                    [msg]="'Please enter a valid email address'" ></app-error-msg>   
+                
+            </form>   
+
+            <app-error-msg 
+*ngIf=" serverErrorMsg && isShowenErrors "
+                    [msg]="serverErrorMsg" ></app-error-msg>      
+
+            <div class="pad__tb-middle pad__t-big">
+                <button class="button button-pink-bgc button-big width-middle-plass"
+                (click)=" resetPassword() " >
+                    Reset Password
+                </button>
+            </div>
+
+
+            </div>
+
+        </div> <!-- end of sign-in-forgot template -->

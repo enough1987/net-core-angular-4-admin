@@ -1,0 +1,242 @@
+
+
+<div class="animated fadeIn pad__top-middle dashboard-wrap vh90">
+
+
+    <div class="dashboard-search-wrap" >   
+        <input type="text" class="dashboard-search" placeholder="search" 
+        #searchInput
+        (keyup.enter)="search(searchInput.value)" 
+        (blur)="search(searchInput.value)" >
+    </div>
+
+    <div class="dashboard-header">
+
+        <input type="button" class="btn btn-secondary item-right" value="main info" 
+        [class.console__tab-item__is-active]=" type == 'info' "
+            (click)=" setType('info') ">
+
+        <input type="button" class="btn btn-secondary item-right" value="gifts history" 
+        [class.console__tab-item__is-active]=" type == 'history' "
+            (click)=" setType('history') ">
+
+    </div>
+
+
+    <div class=" scroll vh82" *ngIf=" type == 'info' && id && existData " >
+
+        <div>
+
+            <div class="profile-row"  >
+                <label class="profile-label" > Id </label>
+                <input class="profile-input" type="text" 
+                disabled
+                [(ngModel)]="info.id"
+                #elmentId
+                />
+            </div>
+
+            <div class="profile-row"  >
+                <label class="profile-label" > Name </label>
+                <input class="profile-input" type="text" 
+                disabled
+                [(ngModel)]="info.name" 
+                #elmentName
+                />
+                <input type="button" class="btn btn-secondary btn-middle"
+                [value]=" ! elmentName.disabled ? 'save' : 'edit' " 
+                (click)="edit(elmentName)" />
+            </div>
+
+            <div class="profile-row"  >
+                <label class="profile-label" > Info </label>
+                <input class="profile-input" type="text" 
+                disabled
+                [(ngModel)]="info.info"
+                #elmentInfo
+                />
+                <input type="button" class="btn btn-secondary btn-middle"
+                [value]=" ! elmentInfo.disabled ? 'save' : 'edit' " 
+                (click)="edit(elmentInfo)" />
+            </div>
+
+
+            <div class="profile-row"  >
+                <label class="profile-label" > Gender </label>
+                <input class="profile-input" type="text" 
+                disabled
+                [(ngModel)]="info.gender" 
+                #elmentGender
+                />
+                <input type="button" class="btn btn-secondary btn-middle" 
+                [value]=" ! elmentGender.disabled ? 'save' : 'edit' " 
+                (click)="edit(elmentGender)" />
+            </div>
+
+            <div class="profile-row"  >
+                <label class="profile-label" > Work </label>
+                <input class="profile-input" type="text" 
+                disabled
+                [(ngModel)]="info.work" 
+                #elmentWork
+                />
+                <input type="button" class="btn btn-secondary btn-middle" 
+                [value]=" ! elmentWork.disabled ? 'save' : 'edit' " 
+                (click)="edit(elmentWork)" />
+            </div>
+
+            <div class="profile-row"  >
+                <label class="profile-label" > Email </label>
+                <input class="profile-input" type="text"
+                disabled 
+                [(ngModel)]="info.email" 
+                #elmentEmail
+                />
+                <input type="button" class="btn btn-secondary btn-middle" value="remove" 
+                (click)="remove('email')" />
+            </div>
+
+            <div class="profile-row"  >
+                <label class="profile-label" > Website </label>
+                <input class="profile-input" type="text"
+                disabled 
+                [(ngModel)]="info.website" 
+                #elmentWebsite
+                />
+                <input type="button" class="btn btn-secondary btn-middle" value="remove" 
+                (click)="remove('website')" />
+            </div>
+
+            <div class="profile-row"  >
+                <label class="profile-label" > Location </label>
+                <input class="profile-input" type="text" 
+                disabled
+                [(ngModel)]="info.lacation" 
+                #elmentLocation
+                />
+                <input type="button" class="btn btn-secondary btn-middle" value="remove"
+                (click)="remove('lacation')" />
+            </div>
+
+            <div class="profile-row"  >
+                <label class="profile-label" > Graduate </label>
+                <input class="profile-input" type="text" 
+                disabled
+                [(ngModel)]="info.graduate" 
+                #elmentGraduate
+                />
+                <input type="button" class="btn btn-secondary btn-middle" value="remove" 
+                (click)="remove('graduate')" />
+            </div>
+
+
+            <div class="profile-row"  >
+
+                <input type="button" class="btn btn-secondary" value="ban avatar" />
+
+            </div>
+
+
+        </div>
+
+    </div> <!-- ++++++++++ -->
+
+    <div class=" scroll vh82" *ngIf=" type == 'history' && id && existData" >
+
+
+    <div class="profile-table" >
+
+        <div class="profile-table__header" >
+
+            <div class="profile-table__header-row" >
+
+                <div class="profile-table-cell profile-table__header-small" >
+
+                </div>
+
+                <div class="profile-table-cell  profile-table__header-cell" >
+                    Session id
+                </div>
+
+                <div class="profile-table-cell  profile-table__header-cell" >
+                    Sum
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="profile-table__body" >
+
+            <div *ngFor="let row of history; let i = index;" > 
+
+                <div class="profile-table__body-row" >
+
+                    <div class="profile-table-cell profile-table__body-small" >
+
+                        <img src="/assets/img/if_arrow_up.svg" 
+                            class="dashboard-table-body__cell-img" 
+                            title="Expand/Collapse Row"
+                            (click)="toggleExpandRow(row)"
+                            *ngIf=" row.$$expanded " />
+                        <img src="/assets/img/if_arrow_down.svg" 
+                            class="dashboard-table-body__cell-img" 
+                            *ngIf=" !row.$$expanded " 
+                            title="Expand/Collapse Row"
+                            (click)="toggleExpandRow(row)"/>
+
+                    </div>
+
+                    <div class="profile-table-cell profile-table__body-cell" >
+                    {{ row.sessionId }}
+                    </div>
+
+                    <div class="profile-table-cell profile-table__body-cell" >
+                    {{ row.sum }}
+                    </div>
+
+                </div>
+
+                <div class="profile-table__details"
+                 *ngIf=" row.$$expanded " >
+
+                    <div class="profile-table__body-details-row" 
+                    *ngFor="let userRow of row.users let idx = index;" >
+
+                        <div class="profile-table-cell profile-table__body-small" >
+
+                        </div>
+
+                        <div class="profile-table-cell profile-table__body-cell" >
+                            {{ userRow.user }}
+                        </div>
+
+                        <div class="profile-table-cell profile-table__body-cell" >
+                            {{ userRow.sum }}                   
+                        </div> 
+                    
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+    
+    </div> <!-- ++++++++++ -->
+
+
+    <div class=" scroll vh82" *ngIf=" !id || !existData " >
+
+        you need to chose some user
+
+    </div>
+
+
+</div>

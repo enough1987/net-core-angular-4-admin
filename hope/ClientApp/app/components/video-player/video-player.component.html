@@ -1,0 +1,30 @@
+
+
+<div class="video-player__wrapper" style="position:relative;">
+  
+  <div class="video-player__play-pause"
+      (click)="playPause()">
+      <button class="video-player__play-pause__btn"
+        *ngIf="isShowenPlayPauseBtn" >
+         Click to play
+      </button>
+  </div>
+
+  <video id="my-video" class="video-player__video video-js" 
+    #video controls preload="auto" controlsList="nodownload" 
+    [width]="videoOptions.width"
+    [height]="videoOptions.height" 
+    [poster]="videoOptions.path + '.jpg' " 
+    [autoplay]="videoOptions.autoplay" 
+    data-setup="{}">
+    <source 
+      [src]="videoOptions.path + '.mp4' " type='video/mp4' class="video-player__source">
+    <source 
+      [src]="videoOptions.path + '.webm' " type='video/webm' class="video-player__source">
+    <p class="vjs-no-js">
+      To view this video please enable JavaScript, and consider upgrading to a web browser that
+      <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+    </p>
+  </video>
+
+</div>

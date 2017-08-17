@@ -1,0 +1,218 @@
+
+
+    <div class="auth-header" 
+        #header 
+        [class.auth-header__second]="secondViewOfHeader" >
+
+        <app-header
+            (view)="changeSecondViewOfHeader($event)"
+            [secondView]="false">
+        </app-header>
+
+ 
+        <div class="main-container-in">
+
+            <h3 class="text text__big" > YOU ARE FABULOUS! </h3>
+
+            <div *ngIf="authService.loggedIn" >
+
+                <p  class="text text__normal" >
+                    Follow the largest online beauty community. Stay up to date with our
+                    <br/> 
+                    new fab content and updates. 
+                </p>
+
+                <div class="cntr__row cntr__row-center" >
+                    <a href="https://www.facebook.com/" target="_blank" >
+                        <img class="icon icon__social cntr__row-icon" 
+                        src="/assets/images/ico-fb-copy.svg" />
+                    </a>
+                    <a href="https://twitter.com" target="_blank">
+                        <img class="icon icon__social cntr__row-icon" 
+                        src="/assets/images/ico-tw-copy.svg" />
+                    </a>
+                    <a href="https://www.instagram.com" target="_blank" >
+                        <img class="icon icon__social cntr__row-icon" 
+                        src="/assets/images/ico-insta-copy.svg" />
+                    </a>
+                </div>
+
+            </div>
+
+            <div *ngIf="!authService.loggedIn" >
+
+                <p  class="text text__normal" >
+                    Sign up and join now the largest online beauty community. 
+                    <br/>
+                    Stay up to date with our new fab content and updates. 
+                </p>
+
+                <button class="button button-pink-bgc" 
+                [routerLink]="['/sign-up']" > 
+                    Join Now
+                </button> 
+
+            </div>          
+
+        </div>
+    </div>
+
+    <div class="main-container" >
+
+
+            <div class="block" >
+                <div class="main-container-in" >
+
+                    <p class="text text__middle text__dark"> What is Fabulive? </p>
+
+                    <div class="grid" >
+
+                        <div class="grid-cell">
+
+                            <img class="img__center" src="/assets/images/img-community.svg" />
+
+                            <h5 class="text text__middle-small text__dark pad__without-bot" >
+                                Community
+                            </h5>
+
+                            <p class="text  text__normal text__center text__dark text__pad-aside" >
+                                Become a part of the largest beauty platform and find yourself among 
+                                like-minded people.
+                            </p>
+
+                            
+                        </div>
+
+                        <div class="grid-cell">
+
+                            <img class="img__center" src="/assets/images/img-knowledge.svg" />
+
+                            <h5 class="text text__middle-small text__dark pad__without-bot" >
+                                Knowledge
+                            </h5>
+
+                            <p class="text text__normal text__center text__dark text__pad-aside" >
+                                Learn all the pro's tricks, get inspired and demonstrate 
+                                your skills to the whole world.
+                            </p>
+
+                            
+                        </div>
+
+                        <div class="grid-cell">
+
+                            <img class="img__center" src="/assets/images/img-inpiration.svg" />
+
+                            <h5 class="text  tex-normal text__middle-small text__dark pad__without-bot" >
+                                Inspiration
+                            </h5>
+
+                            <p class="text text__normal text__center text__dark text__pad-aside" >
+                                Find inspiration to create fabulous looks for yourself or 
+                                share your ideas with others
+                            </p>
+
+                            
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="overflow-hidden" >
+    
+                <div class="block block__color-second" >
+                    <div class="main-container-in text__pad-aside" >
+
+                        <h5 class="text text__middle text__dark">  Why Fabulive?</h5>
+
+                        <p class="text text__normal  text__left text__dark">
+                            Fabulive was developed in order to create jobs for makeup artists and beauty experts,
+                            giving the ability for the world to learn anywhere and anytime from anyone. Fabulive created 
+                            a marketplace platform for anyone to explore, learn and even teach using 
+                            the live stream technology. 
+                            <br/>
+                            So stop waiting, it's time for you to be Fabulous!
+                        </p>
+
+                    </div>
+                </div>
+
+
+                <div class="block block__fixed-small" >
+                    <div class="main-container-in" >
+
+                        <div class="grid" >
+
+                            <div class="grid-cell cntr__mob-text-center">
+
+                                <h5 class="text text__middle text-left text__dark pad__without-bot cntr__row">  
+                                    Coming soon on Mobile </h5>
+
+                                <p class="text text__normal-small text__left text__dark cntr__row">
+                                    Fabulive - our beauty community is coming to mobile devices.
+                                </p>
+
+                                <p class="text text__normal-small text__left text__dark cntr__row">
+                                    Follow us:
+                                </p>
+                                <div class="cntr__row" >
+                                    <a href="https://www.facebook.com/" target="_blank" >
+                                        <img class="icon icon__social cntr__row-icon" 
+                                        src="/assets/images/ico-fb.svg" />
+                                    </a>
+                                    <a href="https://twitter.com" target="_blank">
+                                        <img class="icon icon__social cntr__row-icon" 
+                                        src="/assets/images/ico-tw.svg" />
+                                    </a>
+                                    <a href="https://www.instagram.com" target="_blank" >
+                                        <img class="icon icon__social cntr__row-icon" 
+                                        src="/assets/images/ico-insta.svg" />
+                                    </a>
+                                </div>
+
+                            </div>
+
+                            <div class="grid-cell grid-none-on-small">
+
+                                <img class="img__big-overflow" src="/assets/images/imgPhone.png" >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="block block__color-second " 
+            *ngIf="!authService.loggedIn" >
+                <div class="main-container-in pad__tb-big pad__b-big" >
+
+                    <h5 class="text text__middle text__dark pad__without-bot" >  
+                        Sign Up to Stay Informed </h5>
+
+                    <p class="text text__normal  text__dark">
+                        Stay in touch with Fabulive! Sign up with your e-mail to be 
+                        informed about new content and helpful updates.
+                    </p>
+
+
+                    <button class="button button-pink-bgc" 
+                    [routerLink]="['/sign-up']" > 
+                        Sign Up
+                    </button>    
+
+                </div>
+            </div>
+
+
+        <app-footer>      
+        </app-footer>
+
+
+
+    </div>
+
