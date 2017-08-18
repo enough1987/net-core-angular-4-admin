@@ -87,7 +87,9 @@
 
 
                 <p  class="flex item-cntr purchase__item purchase__item--id" > 
-                    <span class="item-title" > Id </span> 
+                    <span class="item-title"
+                    [class.invalid]="resource.errors?.id"
+                    > Id </span> 
                     <span  class="item-input" 
                     *ngIf="!resource.editMode" > 
                     {{ resource.id }} 
@@ -98,7 +100,9 @@
                     [class.invalid]="resource.errors?.id"  >
                 </p>
                 <p  class="flex item-cntr purchase__item purchase__item--order" > 
-                    <span class="item-title" > Order </span> 
+                    <span class="item-title"
+                    [class.invalid]="resource.errors?.order"
+                    > Order </span> 
                     <span  class="item-input" 
                     *ngIf="!resource.editMode" > 
                     {{ resource.order }} 
@@ -109,7 +113,9 @@
                     [class.invalid]="resource.errors?.order" >
                 </p>
                 <p  class="flex item-cntr purchase__item purchase__item--value" > 
-                    <span class="item-title" > Value </span> 
+                    <span class="item-title"
+                    [class.invalid]="resource.errors?.value"
+                    > Value </span> 
                     <span  class="item-input" 
                     *ngIf="!resource.editMode" > 
                     {{ resource.value }} 
@@ -122,7 +128,9 @@
 
                 <div class="flex item-cntr purchase__item  purchase__item--select"  
                     *ngIf="resource.editMode" >
-                    <span class="item-title" > Gift type </span>
+                    <span class="item-title"
+                    [class.invalid]="resource.errors?.type"
+                    > Gift type </span>
 
                     <div class="item-select">
                         <select  class="custom-select  purchase__select"
@@ -209,69 +217,11 @@
                     <span class="item-title  item-title--required" > ID </span> 
                 </p>
 
-                <div class="item-cntr" >
-                    <span class="item-title  item-title--required  item-title--text-field-style" 
-                    > 
-                    Upload bigger gift image </span> 
+                <div class="item-cntr gift-type-field" >
 
-<div class="add-gift__icon-wrapper  add-gift__icon-wrapper--big"
-[class.has-file]="newResource.imgUrl" >
-        <!-- class "has-file" then file uploaded-->
-
-<div class="add-gift__icon add-gift__icon--big" >
-    <img class="purchase-img"
-    *ngIf="newResource.imgUrl" 
-    [src]="newResource.imgUrl" >
-</div>
-<div class="upload-file  upload-file--gift-icon" >
-    <input type="file"  class="upload-file-input"  placeholder="Upload img..."  required
-    [class.invalid]="newResource.errors?.imgUrl" 
-    (change)="resourcesService.fileChangeEvent($event, newResource)" />
-    <label for="file-input" class="upload-file-label">
-        <span class="upload-file-label__has-file">
-            <svg class="icon" width="16" height="16"><use xlink:href="assets/img/sprite.svg#ico-refresh" /></svg>
-            Change
-        </span>
-        <span class="upload-file-label__no-file">Drop files here or click to upload</span>
-    </label>
-</div>
-</div>
-
-        </div>
-
-        <div class="item-cntr" >
-        <span class="item-title  item-title--required  item-title--text-field-style" > Upload smaller gift image </span> 
-
-<div class="add-gift__icon-wrapper  add-gift__icon-wrapper--small"
-[class.has-file]="newResource.imgBigUrl" >
-
-    <!-- class "has-file" then file uploaded-->
-
-<div class="add-gift__icon add-gift__icon--small" >
-    <img class="purchase-img"
-    *ngIf="newResource.imgBigUrl" 
-    [src]="newResource.imgBigUrl" >
-</div>
-<div class="upload-file  upload-file--gift-icon" >
-    <input type="file"  class="upload-file-input "  placeholder="Upload big img..."  required
-    [class.invalid]="newResource.errors?.imgBigUrl" 
-    (change)=" resourcesService.fileChangeEvent( $event, newResource, 'imgBigUrl' ) " />
-    <label for="file-input" class="upload-file-label">
-        <span class="upload-file-label__has-file">
-            <svg class="icon" width="16" height="16"><use xlink:href="assets/img/sprite.svg#ico-refresh" /></svg>
-            Change
-        </span>
-        <span class="upload-file-label__no-file">Drop files here or click to upload</span>
-    </label>
-</div>
-</div>
-                </div>
- 
-                <h5>Additional Info</h5>
-
-                <div class="item-cntr" >
-
-                    <p class="item-title  item-title--text-field-style" > Choose </p>
+                    <p class="item-title  item-title--required  item-title--text-field-style" 
+                    [class.invalid]="newResource.errors?.type"
+                    > Choose </p>
 
                     <input class="btn btn-secondary switch-item" type="button" value="Cool" 
                     (click)="resourcesService.setProp(newResource, 'type' , 'cool' )"
@@ -288,6 +238,69 @@
 
                 </div>
 
+                <div class="item-cntr" >
+                    <span class="item-title  item-title--required  item-title--text-field-style"
+                    [class.invalid]="newResource.errors?.imgBigUrl" 
+                    > 
+                    Upload bigger gift image </span> 
+
+<div class="add-gift__icon-wrapper  add-gift__icon-wrapper--big"
+[class.has-file]="newResource.imgBigUrl" >
+
+        <!-- class "has-file" then file uploaded-->
+
+<div class="add-gift__icon add-gift__icon--big" >
+    <img class="purchase-img"
+    *ngIf="newResource.imgUrl" 
+    [src]="newResource.imgUrl" >
+</div>
+<div class="upload-file  upload-file--gift-icon" >
+    <input type="file"  class="upload-file-input"  placeholder="Upload big img..."  required
+    [class.invalid]="newResource.errors?.imgBigUrl" 
+    (change)=" resourcesService.fileChangeEvent( $event, newResource, 'imgBigUrl' ) " />
+    <label for="file-input" class="upload-file-label">
+        <span class="upload-file-label__has-file">
+            <svg class="icon" width="16" height="16"><use xlink:href="assets/img/sprite.svg#ico-refresh" /></svg>
+            Change
+        </span>
+        <span class="upload-file-label__no-file">Drop files here or click to upload</span>
+    </label>
+</div>
+</div>
+
+        </div>
+
+        <div class="item-cntr" >
+        <span class="item-title  item-title--required  item-title--text-field-style"
+        [class.invalid]="newResource.errors?.imgUrl"
+        > Upload smaller gift image </span> 
+
+<div class="add-gift__icon-wrapper  add-gift__icon-wrapper--small"
+[class.has-file]="newResource.imgUrl" >
+
+    <!-- class "has-file" then file uploaded-->
+
+<div class="add-gift__icon add-gift__icon--small" >
+    <img class="purchase-img"
+    *ngIf="newResource.imgBigUrl" 
+    [src]="newResource.imgBigUrl" >
+</div>
+<div class="upload-file  upload-file--gift-icon" >
+    <input type="file"  class="upload-file-input "  placeholder="Upload img..."  required
+    [class.invalid]="newResource.errors?.imgUrl" 
+    (change)="resourcesService.fileChangeEvent($event, newResource)" />
+    <label for="file-input" class="upload-file-label">
+        <span class="upload-file-label__has-file">
+            <svg class="icon" width="16" height="16"><use xlink:href="assets/img/sprite.svg#ico-refresh" /></svg>
+            Change
+        </span>
+        <span class="upload-file-label__no-file">Drop files here or click to upload</span>
+    </label>
+</div>
+</div>
+                </div>
+ 
+                <h5>Additional Info</h5>
 
                 <p class="flex item-cntr text-field" > 
                     <input type="text" class="item-input" placeholder=" "

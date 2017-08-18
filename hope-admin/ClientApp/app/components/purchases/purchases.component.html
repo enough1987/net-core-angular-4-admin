@@ -71,7 +71,9 @@
 -->
 
                 <p  class="flex item-cntr purchase__item purchase__item--id purchase__item--ontop" > 
-                    <span class="item-title" > Id </span> 
+                    <span class="item-title"
+                    [class.invalid]="resource.errors?.id" 
+                    > Id </span> 
                     <span  class="item-input" 
                     *ngIf="!resource.editMode" > 
                     {{ resource.id }} 
@@ -82,7 +84,9 @@
                     [(ngModel)]="resource.id" >
                 </p>
                 <p  class="flex item-cntr purchase__item purchase__item--order" > 
-                    <span class="item-title" > Order </span> 
+                    <span class="item-title"
+                    [class.invalid]="resource.errors?.order"
+                    > Order </span> 
                     <span  class="item-input" 
                     *ngIf="!resource.editMode" > 
                     {{ resource.order }} 
@@ -93,7 +97,9 @@
                     [(ngModel)]="resource.order" >
                 </p>
                 <p  class="flex item-cntr purchase__item purchase__item--discount" > 
-                    <span class="item-title" > Discount </span> 
+                    <span class="item-title"
+                    [class.invalid]="resource.errors?.discount"
+                    > Discount </span> 
                     <span  class="item-input" 
                     *ngIf="!resource.editMode" > 
                     {{ resource.discount }} 

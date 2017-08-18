@@ -1,148 +1,149 @@
 <div class="animated fadeIn pad__top-middle dashboard-wrap vh90">
-
-
-    <div class="dashboard-header">
-
-        <input type="button" class="btn btn-secondary item-right" value="Current" 
-        [class.console__tab-item__is-active]=" id == 'current' "
-            (click)=" setList('current') ">
-
-        <input type="button" class="btn btn-secondary item-right" value="Past" 
-        [class.console__tab-item__is-active]=" id == 'past' "
-            (click)=" setList('past') ">
-
-        <input type="button" class="btn btn-secondary item-right" value="Rejected" 
-        [class.console__tab-item__is-active]=" id == 'rejected' "
-            (click)=" setList('rejected') ">
-
-    </div>
-
-    <div class=" scroll vh82" 
-    *ngIf=" id == 'current' || id == 'past' || id == 'rejected' ">
-
-
-        <ngx-datatable 
-            #myTable class='material expandable' 
-            [columnMode]="'standard'" 
-            [headerHeight]="50" 
-            [footerHeight]="0" 
-            [rowHeight]="50"
-            [scrollbarV]="50" 
-            [rows]='rows'>
-
-            <ngx-datatable-column 
-            [width]="50" 
-            [resizeable]="false" 
-            [sortable]="false" 
-            [draggable]="false" 
-            [canAutoResize]="false">
-                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
-
-                </ng-template>
-            </ngx-datatable-column>
-
-
-            <ngx-datatable-column name="Time" 
-            [width]="100" style="width:100px; max-width:100px; text-overflow: ellipsis;">
-                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
-                    <div class="dashboard-table-body__cell">
-                        {{ msToTime(row?.time) }}
-                    </div>
-                </ng-template>
-            </ngx-datatable-column>
-
-            <ngx-datatable-column name="User Id" 
-            [width]="200">
-                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
-                    <div class="dashboard-table-body__cell ">
-                        {{ row?.userId }}
-                    </div>
-                </ng-template>
-            </ngx-datatable-column>
-
-            <ngx-datatable-column name="Email" 
-            [width]="200">
-                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
-                    <div class="dashboard-table-body__cell ">
-                        {{ row?.email }}
-                    </div>
-                </ng-template>
-            </ngx-datatable-column>
-
-
-            <ngx-datatable-column name="Sum" 
-            [width]="200">
-                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
-                    <div class="dashboard-table-body__cell ">
-                        {{ row?.sum }}
-                    </div>
-                </ng-template>
-            </ngx-datatable-column>
-
-
-            <ngx-datatable-column>
-                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
-
-                    <button class="btn btn-secondary btn-confirm" 
-                    *ngIf="!row.confirmed && !row.rejected" 
-                    (click)="confirm(row)"> Confirm </button>
-
-                </ng-template>
-            </ngx-datatable-column>
-
-
-            <ngx-datatable-column>
-                <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
-
-                    <button class="btn btn-secondary btn-reject" 
-                    *ngIf="!row.confirmed && !row.rejected" 
-                    (click)="openRejectModal(row)"> Reject </button>
-
-                </ng-template>
-            </ngx-datatable-column>
-
-
-        </ngx-datatable>
-
-
-    </div>
-    <!-- !!!!!!!!!!!!!!!! -->
-
-<!-- +++++++++++ -->
-
-<div class="modal" 
-[class.modal-active]="rejectedRow" >
-
-
-    <div class="modal-content" >
-
-        <div class="modal-header">
-            Please, enter reason of rejection :
+    
+    
+        <div class="dashboard-header">
+    
+            <input type="button" class="btn btn-secondary item-right" value="Current" 
+            [class.console__tab-item__is-active]=" id == 'current' "
+                (click)=" setList('current') ">
+    
+            <input type="button" class="btn btn-secondary item-right" value="Past" 
+            [class.console__tab-item__is-active]=" id == 'past' "
+                (click)=" setList('past') ">
+    
+            <input type="button" class="btn btn-secondary item-right" value="Rejected" 
+            [class.console__tab-item__is-active]=" id == 'rejected' "
+                (click)=" setList('rejected') ">
+    
         </div>
-
-        <textarea class="modal-textarea"> 
-    </textarea>
-
-        <div class="modal-body">
+    
+        <div class=" scroll vh82" 
+        *ngIf=" id == 'current' || id == 'past' || id == 'rejected' ">
+    
+    
+            <ngx-datatable 
+                #myTable class='material expandable' 
+                [columnMode]="'standard'" 
+                [headerHeight]="50" 
+                [footerHeight]="0" 
+                [rowHeight]="50"
+                [scrollbarV]="50" 
+                [rows]='rows'>
+    
+                <ngx-datatable-column 
+                [width]="50" 
+                [resizeable]="false" 
+                [sortable]="false" 
+                [draggable]="false" 
+                [canAutoResize]="false">
+                    <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+    
+                    </ng-template>
+                </ngx-datatable-column>
+    
+    
+                <ngx-datatable-column name="Time" 
+                [width]="100" style="width:100px; max-width:100px; text-overflow: ellipsis;">
+                    <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                        <div class="dashboard-table-body__cell">
+                            {{ msToTime(row?.time) }}
+                        </div>
+                    </ng-template>
+                </ngx-datatable-column>
+    
+                <ngx-datatable-column name="User Id" 
+                [width]="200">
+                    <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                        <div class="dashboard-table-body__cell ">
+                            {{ row?.userId }}
+                        </div>
+                    </ng-template>
+                </ngx-datatable-column>
+    
+                <ngx-datatable-column name="Email" 
+                [width]="200">
+                    <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                        <div class="dashboard-table-body__cell ">
+                            {{ row?.email }}
+                        </div>
+                    </ng-template>
+                </ngx-datatable-column>
+    
+    
+                <ngx-datatable-column name="Sum" 
+                [width]="200">
+                    <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                        <div class="dashboard-table-body__cell ">
+                            {{ row?.sum }}
+                        </div>
+                    </ng-template>
+                </ngx-datatable-column>
+    
+    
+                <ngx-datatable-column>
+                    <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+    
+                        <button class="btn btn-secondary btn-confirm" 
+                        *ngIf="!row.confirmed && !row.rejected" 
+                        (click)="confirm(row)"> Confirm </button>
+    
+                    </ng-template>
+                </ngx-datatable-column>
+    
+    
+                <ngx-datatable-column>
+                    <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+    
+                        <button class="btn btn-secondary btn-reject" 
+                        *ngIf="!row.confirmed && !row.rejected" 
+                        (click)="openRejectModal(row)"> Reject </button>
+    
+                    </ng-template>
+                </ngx-datatable-column>
+    
+    
+            </ngx-datatable>
+    
+    
         </div>
-
-        <div class="modal-btn-group">
-            <button class="btn btn-secondary" 
-             (click)="clickOkCancelModal()" >
-            Cancel
-        </button>
-            <button class="btn btn-secondary"
-             (click)="clickOkOnModal()" >
-            Ok
-        </button>
+        <!-- !!!!!!!!!!!!!!!! -->
+    
+    <!-- +++++++++++ -->
+    
+    <div class="modal" 
+    [class.modal-active]="rejectedRow" >
+    
+    
+        <div class="modal-content" >
+    
+            <div class="modal-header">
+                Please, enter reason of rejection :
+            </div>
+    
+            <textarea class="modal-textarea"> 
+        </textarea>
+    
+            <div class="modal-body">
+            </div>
+    
+            <div class="modal-btn-group">
+                <button class="btn btn-secondary" 
+                 (click)="clickOkCancelModal()" >
+                Cancel
+            </button>
+                <button class="btn btn-secondary"
+                 (click)="clickOkOnModal()" >
+                Ok
+            </button>
+            </div>
+    
         </div>
-
+    
     </div>
-
-</div>
-
-<!-- +++++++++++ -->
-
-
-</div>
-
+    
+    <!-- +++++++++++ -->
+    
+    
+    </div>
+    
+    

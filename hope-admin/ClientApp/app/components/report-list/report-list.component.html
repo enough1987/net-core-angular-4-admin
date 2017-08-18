@@ -1,25 +1,46 @@
-<div class="animated fadeIn pad__top-middle dashboard-wrap vh90">
+<div class=" animated fadeIn pad__top-middle dashboard-wrap table-wrap ">
 
+    <div class="reports-header">
 
-    <div class="dashboard-header">
+        <div class="reports-header__tabs">
 
-        <input type="button" class="btn btn-secondary item-right" value="Broadcasters" 
-        [class.console__tab-item__is-active]=" id == 'broadcasters' " 
+            <button type="button" class="btn item-right tab-item"
+        [class.tab-item--is-active]=" id == 'broadcasters' " 
         (click)=" setReportListId('broadcasters') ">
+                Broadcasters
+                <span class="broadcasters-number">
+                12301</span>
+            </button>
 
-        <input type="button" class="btn btn-secondary item-right" value="Chat reports"
-        [class.console__tab-item__is-active]=" id == 'chatReports' "  
+            <button type="button" class="btn item-right tab-item"
+        [class.tab-item--is-active]=" id == 'chatReports' "  
         (click)=" setReportListId('chatReports') ">
+                Chat reports
+                <span class="chat-reports-number">
+                5932</span>
+            </button>
+
+        </div>
+        <div class="reports-header__reload">
+
+            <button class="btn btn-secondary btn--reload" type="button">
+                <svg class="icon" width="16" height="16"><use xlink:href="assets/img/sprite.svg#ico-refresh" /></svg>
+                Reload
+                <span class="new-reports-number">
+                244</span>
+                </button>
+
+        </div>
 
     </div>
 
-    <div class=" scroll vh82"
+    <div class=" "
     *ngIf=" id == 'broadcasters' ">
 
         <ngx-datatable
             #myTable
             class='material expandable'
-            [columnMode]="'standard'"
+            [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="0"
             [rowHeight]="50"
@@ -28,7 +49,7 @@
 
             <!-- Row Detail Template -->
         <ngx-datatable-row-detail style="border: 1px solid red !important;" 
-            [rowHeight]="200" 
+            [rowHeight]="200"
             #myDetailRow 
             (toggle)="onDetailToggle($event)">
         <ng-template let-row="row" let-value="value" ngx-datatable-row-detail-template >
@@ -36,53 +57,71 @@
 
             <!-- LOL -->
 
-            <div class="dashboard-table-body scroll ">
+            <div class="dashboard-table-body ">
 
               <div *ngFor="let item of row ; let i = index" >
                 <div class="dashboard-table-body__row " 
                 *ngIf="i != 0" >
 
-                        <div style="width:50px" >
+                        <div style="min-width:50px; max-width:50px" >
 
                         </div>
 
-                        <div class="dashboard-table-body__cell " 
-                        style="width:100px; max-width:100px; text-overflow: ellipsis;" >
-                            {{ msToTime(item.time) }}
-                        </div>
-
-                        <div class="dashboard-table-body__cell " >
+                        <div class="dashboard-table-body__cell " style="min-width:50px" >
                             
                         </div>
 
-                        <div class="dashboard-table-body__cell " >
+
+
+                        <div class="dashboard-table-body__cell" style="min-width:100px">
                             {{ item.roomId }}
                         </div>
 
-                        <div class="dashboard-table-body__cell " >
+                        <div class="dashboard-table-body__cell " style="min-width:100px"
+                        style="width:100px; text-overflow: ellipsis;" >
+                            {{ msToTime(item.time) }}
+                        </div>
+
+                        <div class="dashboard-table-body__cell " style="min-width:100px" >
+
+                        </div>
+
+                        <div class="dashboard-table-body__cell  dashboard-table-body__cell--reason" style="min-width:100px" >
                             {{ item.reason }}
                         </div>
 
-                        <div class="dashboard-table-body__cell " >
+                        <div class="dashboard-table-body__cell " style="min-width:100px">
                             {{ item.complainant }}
                         </div>
 
-                        <div class="dashboard-table-body__cell " style="width:100px" >
 
-                        </div>
+                        <div class="dashboard-table-body__cell " style="min-width:300px">
 
-                        <div class="dashboard-table-body__cell " >
+                            <!--
+                            <span class="report-action-status"
+                            *ngIf="item.banned">
 
-                            <img 
-                            src="/assets/img/ban.png" 
-                            class="dashboard-table-body__cell-img-in" 
-                            *ngIf="item.banned" />
+                            Banned </span>
 
+                            <button class="btn btn-secondary btn-report btn-report--unban" 
+                            *ngIf="item.banned" 
+                            > 
+                            Unban </button>
 
+                           
                             <button class="btn btn-secondary btn-report" 
                             *ngIf="!item.banned" 
-                            (click)="ban(item)" > ban </button>
-                            
+                            (click)="ban(item)" > Ban </button>
+                           
+                            <button class="btn btn-secondary btn-report btn-report--warn" 
+                            *ngIf="!item.banned" 
+                            > 
+                            Warn </button>
+                                -->
+
+                            <span class="actions-history-item">
+                                Unbanned: 10/07/2017
+                            </span>
                         </div>
 
                 </div>
@@ -103,22 +142,42 @@
             [draggable]="false"
             [canAutoResize]="false">
             <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+                    <span
+                        class="dashboard-table-body__icon" 
+                        title="Expand/Collapse Row"
+                        (click)="toggleExpandRow(row)"
+                        *ngIf=" row.length > 1 && row.$$expanded">
+                        <svg class="icon" width="10" height="10" style="transform:rotate(180deg)"><use xlink:href="assets/img/sprite.svg#ico-drop-down" /></svg>
+                    </span>
 
-                            <img src="/assets/img/if_arrow_up.svg" 
-                            class="dashboard-table-body__cell-img" 
-                            title="Expand/Collapse Row"
-                            (click)="toggleExpandRow(row)"
-                            *ngIf=" row.length > 1 && row.$$expanded" />
-                            <img src="/assets/img/if_arrow_down.svg" 
-                            class="dashboard-table-body__cell-img" 
-                            *ngIf=" row.length > 1 && !row.$$expanded " 
-                            title="Expand/Collapse Row"
-                            (click)="toggleExpandRow(row)"/>
+                    <span
+                        class="dashboard-table-body__icon" 
+                        *ngIf=" row.length > 1 && !row.$$expanded " 
+                        title="Expand/Collapse Row"
+                        (click)="toggleExpandRow(row)">
+                        <svg class="icon" width="10" height="10"><use xlink:href="assets/img/sprite.svg#ico-drop-down" /></svg>
+                    </span>
 
             </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column  name="Time" [width]="100" 
+            <ngx-datatable-column  name="Q-ty" [width]="50" [minWidth]="50" >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+                <div class="dashboard-table-body__cell " >
+                {{ row.length }}
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Room Id" [width]="200" >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                <div class="dashboard-table-body__cell" >
+                {{ row[0]?.roomId }}
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column  name="Report Date" [width]="100" [minWidth]="100"
                 style="width:100px; max-width:100px; text-overflow: ellipsis;" >
             <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
                 <div class="dashboard-table-body__cell " >
@@ -127,31 +186,25 @@
             </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="User Id" [width]="200" >
+            <ngx-datatable-column name="User Id" [width]="200" [minWidth]="100">
             <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
-                <div class="dashboard-table-body__cell " >
+                <div class="dashboard-table-body__cell     dashboard-table-body__cell--userid" >
                 {{ row[0]?.userId }} 
                 </div>
             </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="Room Id" [width]="200" >
-            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
-                <div class="dashboard-table-body__cell " >
-                {{ row[0]?.roomId }}
-                </div>
-            </ng-template>
-            </ngx-datatable-column>
-
-            <ngx-datatable-column name="Reason" [width]="200" >
+            <ngx-datatable-column name="Reason" [width]="200" [minWidth]="100">
             <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
-                <div class="dashboard-table-body__cell " >
+                <div class="dashboard-table-body__cell   dashboard-table-body__cell--reason"
+                [class.attention]="row.length > 5"
+                >
                 {{ row[0]?.reason }} 
                 </div>
             </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="Сomplainant" [width]="200" >
+            <ngx-datatable-column name="Reported by" [width]="200" [minWidth]="100">
             <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
                 <div class="dashboard-table-body__cell " >
                 {{ row[0]?.complainant }}
@@ -159,23 +212,71 @@
             </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column  name="Amount" [width]="100" >
+            <ngx-datatable-column name="Actions" [width]="300" [minWidth]="300">
             <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
-                <div class="dashboard-table-body__cell " >
-                {{ row.length }}
+
+                <div class="dashboard-table-body__btns">
+
+                    <div class="ban ban--user">
+
+                        <button class="btn btn-secondary btn-report btn-report--toggle"
+                        >
+                        <!-- Onclick add class toggled to .ban--user & class lifted to .datatable-row-wrapper-->
+                            Ban
+                            <svg class="icon" width="8" height="6"><use xlink:href="assets/img/sprite.svg#ico-drop-down" /></svg>
+
+                        </button>
+                        <div class="ban__options">
+                            <button class="btn btn-report btn-report--ban"
+                            (click)="ban(row[0])" 
+                            > 3 hours </button>
+                            <button class="btn btn-report btn-report--ban" 
+                            > 24 hours </button>
+                            <button class="btn btn-report btn-report--ban" 
+                            > 1 week </button>
+                            <button class="btn btn-report btn-report--ban" 
+                            > Forever </button> 
+                        </div>               
+                    </div>
+
+
+<!--
+
+                    <button class="btn btn-secondary btn-report btn-report--unban"> 
+                    Unban </button>
+-->
+                    <div class="ban ban--chat"
+                    [class.toggled]="0" 
+                    >
+                        <button class="btn btn-secondary btn-report btn-report--toggle"
+                        >
+                        <!-- Onclick add class toggled to .ban--chat & class lifted to .datatable-row-wrapper-->
+                            Ban chat
+                            <svg class="icon" width="8" height="6"><use xlink:href="assets/img/sprite.svg#ico-drop-down" /></svg>
+
+                        </button>
+                        <div class="ban__options">
+                            <button class="btn btn-report btn-report--ban"
+                            > 3 hours </button>
+                            <button class="btn btn-report btn-report--ban" 
+                            > 24 hours </button>
+                            <button class="btn btn-report btn-report--ban" 
+                            > 1 week </button>
+                            <button class="btn btn-report btn-report--ban" 
+                            > Forever </button> 
+                        </div>               
+                    </div>
+
+<!--
+                    <button class="btn btn-secondary btn-report btn-report--unban"> 
+                    Unban chat </button>
+ -->          
+                    <button class="btn btn-secondary btn-report btn-report--warn"> 
+                    Warn
+                    <span class="warning-number">(2)</span>
+                    </button>
+
                 </div>
-            </ng-template>
-            </ngx-datatable-column>
-
-            <ngx-datatable-column >
-            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
-
-               <button class="btn btn-secondary btn-report" 
-               (click)="ban(row[0])" > ban </button>
-
-
-
-               
 
             </ng-template>
             </ngx-datatable-column>
@@ -184,17 +285,17 @@
 
     </div> <!-- !!!!!!!!!!!!!!!! -->
 
-    <div class=" scroll vh82"
+    <div class=" "
     *ngIf=" id == 'chatReports' ">
 
 
       <ngx-datatable
             #myTable
             class='material expandable'
-            [columnMode]="'standard'"
+            [columnMode]="'force'"
             [headerHeight]="50"
             [footerHeight]="0"
-            [rowHeight]="50"
+            [rowHeight]="70"
             [scrollbarV]="50"
             [rows]='rows' >
 
@@ -208,54 +309,72 @@
 
             <!-- LOL -->
 
-            <div class="dashboard-table-body scroll ">
+            <div class="dashboard-table-body ">
 
               <div *ngFor="let item of row ; let i = index" >
                 <div class="dashboard-table-body__row " 
                 *ngIf="i != 0" >
 
                         <div  class="dashboard-table-body__cell " 
-                            style="width:50px" >
+                            style="min-width:50px; max-width:50px" >
 
                         </div>
 
-                        <div  class="dashboard-table-body__cell " 
-                        style="width:100px; max-width:100px; text-overflow: ellipsis;" >
-                            {{ msToTime(item.time) }}
-                        </div>
-
-                        <div class="dashboard-table-body__cell " >
+                        <div class="dashboard-table-body__cell " style="min-width:50px" >
                             
                         </div>
 
-                        <div class="dashboard-table-body__cell " >
+                        <div class="dashboard-table-body__cell " style="min-width:100px">
                             {{ item.roomId }}
                         </div>
 
-                        <div class="dashboard-table-body__cell " >
-                            {{ item.message }}
+                        <div  class="dashboard-table-body__cell "
+                        style="min-width:100px; text-overflow: ellipsis;" >
+                            {{ msToTime(item.time) }}
                         </div>
 
-                        <div class="dashboard-table-body__cell " >
+                        <div class="dashboard-table-body__cell " style="min-width:100px">
+                            
+                        </div>
+
+
+                        <div class="dashboard-table-body__cell dashboard-table-body__cell--message" style="min-width:100px">
+                            <div class="dashboard-table-body__cell-inner">
+                            {{ item.message }}  
+                            </div>
+                            
+                            <!-- if text is overflowing -->
+                            <div class="dashboard-table-body__cell-full-text">
+                                {{ item.message }}
+                            </div>
+                            
+                        </div>
+
+                        <div class="dashboard-table-body__cell " style="min-width:100px">
                             {{ item.complainant }}
                         </div>
 
-                        <div  class="dashboard-table-body__cell " style="width:100px" >
+                        <div class="dashboard-table-body__cell " style="min-width:300px">
+ <!--
+                            <span class="report-action-status"
+                            *ngIf="item.banned">
 
-                        </div>
+                            Banned </span>
 
-                        <div class="dashboard-table-body__cell " >
+                            <button class="btn btn-secondary btn-report btn-report--unban" 
+                            *ngIf="item.banned" 
+                            > 
+                            Unban </button>
 
-                            <img 
-                            src="/assets/img/ban.png" 
-                            class="dashboard-table-body__cell-img-in" 
-                            *ngIf="item.banned" />
-
-
+                            
                             <button class="btn btn-secondary btn-report" 
                             *ngIf="!item.banned" 
                             (click)="ban(item)" > ban </button>
                             
+                            <button class="btn btn-secondary btn-report btn-report--warn" 
+                            *ngIf="!item.banned" 
+                            > Warn </button>
+-->
                         </div>
 
                 </div>
@@ -276,22 +395,42 @@
             [draggable]="false"
             [canAutoResize]="false">
             <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
-
-                            <img src="/assets/img/if_arrow_up.svg" 
-                            class="dashboard-table-body__cell-img" 
+                        <span
+                            class="dashboard-table-body__icon"
+                            style="transform:rotate(180deg)"
                             title="Expand/Collapse Row"
                             (click)="toggleExpandRow(row)"
-                            *ngIf=" row.length > 1 && row.$$expanded" />
-                            <img src="/assets/img/if_arrow_down.svg" 
-                            class="dashboard-table-body__cell-img" 
+                            *ngIf=" row.length > 1 && row.$$expanded">
+                            <svg class="icon" width="10" height="10"><use xlink:href="assets/img/sprite.svg#ico-drop-down" /></svg>
+                        </span>
+
+                        <span
+                            class="dashboard-table-body__icon"
                             *ngIf=" row.length > 1 && !row.$$expanded " 
                             title="Expand/Collapse Row"
-                            (click)="toggleExpandRow(row)"/>
-
+                            (click)="toggleExpandRow(row)">
+                            <svg class="icon" width="10" height="10"><use xlink:href="assets/img/sprite.svg#ico-drop-down" /></svg>
+                        </span>
             </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column  name="Time"  [width]="100" 
+            <ngx-datatable-column name="Q-ty"  [width]="50" [minWidth]="50" >
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
+                <div class="dashboard-table-body__cell " >
+                {{ row.length }}
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column name="Room Id" [width]="200" [minWidth]="100">
+            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
+                <div class="dashboard-table-body__cell " >
+                {{ row[0]?.roomId }}
+                </div>
+            </ng-template>
+            </ngx-datatable-column>
+
+            <ngx-datatable-column  name="Time"  [width]="100" [minWidth]="100"
                 style="width:100px; max-width:100px; text-overflow: ellipsis;" >
             <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
                 <div class="dashboard-table-body__cell " >
@@ -300,31 +439,31 @@
             </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="User Id" [width]="200" >
+            <ngx-datatable-column name="User Id" [width]="200" [minWidth]="100">
             <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
-                <div class="dashboard-table-body__cell " >
+                <div class="dashboard-table-body__cell     dashboard-table-body__cell--userid" >
                 {{ row[0]?.userId }} 
                 </div>
             </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="Room Id" [width]="200" >
-            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell">
-                <div class="dashboard-table-body__cell " >
-                {{ row[0]?.roomId }}
-                </div>
-            </ng-template>
-            </ngx-datatable-column>
-
-            <ngx-datatable-column name="Message" [width]="200" >
+            <ngx-datatable-column name="Chat message" [width]="200" [minWidth]="100">
             <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
-                <div class="dashboard-table-body__cell " >
-                {{ row[0]?.message }} 
+                <div class="dashboard-table-body__cell dashboard-table-body__cell--message" >
+                    <div class="dashboard-table-body__cell-inner">
+                       {{ row[0]?.message }}
+                    </div>
+                    
+                    <!-- if text is overflowing -->
+                    <div class="dashboard-table-body__cell-full-text">
+                            {{ row[0]?.message }} 
+                    </div>
+                
                 </div>
             </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="Сomplainant" [width]="200" >
+            <ngx-datatable-column name="Reported by" [width]="200" [minWidth]="100" >
             <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
                 <div class="dashboard-table-body__cell " >
                 {{ row[0]?.complainant }}
@@ -332,19 +471,69 @@
             </ng-template>
             </ngx-datatable-column>
 
-            <ngx-datatable-column name="Amount"  [width]="100" >
+            <ngx-datatable-column  name="Actions" [width]="300" [minWidth]="300">
             <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
-                <div class="dashboard-table-body__cell " >
-                {{ row.length }}
+
+                <div class="dashboard-table-body__btns">
+
+                    <div class="ban ban--user"
+                    [class.toggled]="0" 
+                    >
+                        <button class="btn btn-secondary btn-report btn-report--toggle"
+                        >
+                            Ban
+                            <svg class="icon" width="8" height="6"><use xlink:href="assets/img/sprite.svg#ico-drop-down" /></svg>
+
+                        </button>
+                        <div class="ban__options">
+                            <button class="btn btn-report btn-report--ban"
+                            (click)="ban(row[0])" 
+                            > 3 hours </button>
+                            <button class="btn btn-report btn-report--ban" 
+                            > 24 hours </button>
+                            <button class="btn btn-report btn-report--ban" 
+                            > 1 week </button>
+                            <button class="btn btn-report btn-report--ban" 
+                            > Forever </button> 
+                        </div>               
+                    </div>
+
+
+
+<!--
+                    <button class="btn btn-secondary btn-report btn-report--unban"> 
+                    Unban </button>
+
+                    <div class="ban ban--chat"
+                    [class.toggled]="0" 
+                    >
+                        <button class="btn btn-secondary btn-report btn-report--toggle"
+                        >
+                            Ban chat
+                            <svg class="icon" width="8" height="6"><use xlink:href="assets/img/sprite.svg#ico-drop-down" /></svg>
+
+                        </button>
+                        <div class="ban__options">
+                            <button class="btn btn-report btn-report--ban"
+                            > 3 hours </button>
+                            <button class="btn btn-report btn-report--ban" 
+                            > 24 hours </button>
+                            <button class="btn btn-report btn-report--ban" 
+                            > 1 week </button>
+                            <button class="btn btn-report btn-report--ban" 
+                            > Forever </button> 
+                        </div>               
+                    </div>
+
+ -->
+                    <button class="btn btn-secondary btn-report btn-report--unban"> 
+                    Unban chat </button>
+              
+                    <button class="btn btn-secondary btn-report btn-report--warn"> 
+                    Warn </button>
+
                 </div>
-            </ng-template>
-            </ngx-datatable-column>
-
-            <ngx-datatable-column   >
-            <ng-template let-row="row" ngx-datatable-cell-template class="table-cell" >
-
-               <button class="btn btn-secondary btn-report" 
-               (click)="ban(row[0])" > ban </button>
+            
 
             </ng-template>
             </ngx-datatable-column>

@@ -8,12 +8,16 @@
 
 
 // app-dashboard and app-root are Angular2 selectors. You can add here your own selectors if you need.
-.app, .app-dashboard, 
+.app, .app-dashboard,
 app-dashboard,
 app-root {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.app-dashboard {
+  min-height: calc( 100vh - 100px ) ; 
 }
 
 .app-header {
