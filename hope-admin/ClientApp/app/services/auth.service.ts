@@ -20,12 +20,13 @@ export class AuthService implements CanActivate {
 
   // it useds in routing as guard
   canActivate(): boolean {
-    console.log( window.location );
+    let _window: any = window;
+    console.log( _window.location );
     console.log( "AuthGuard#canActivate called ", AuthService.isLogedIn );
     if( !AuthService.isLogedIn ) {
       // Navigate to the login page with extras
       this.router.navigate(['/login']);
-      //window.location.href = window.location.origin + '/login';
+      //_window.location.href = _window.location.origin + '/login';
       return false;
     } else {
       return true;

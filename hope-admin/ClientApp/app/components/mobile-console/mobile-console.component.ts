@@ -26,7 +26,8 @@ export class MobileConsoleComponent {
   // init websocket connection 
   private connectConsole(): void {
 
-    this.socket = (<any>window).io(this.consoleServerLocal, {
+    let _window:any = window;
+    this.socket = _window.io(this.consoleServerLocal, {
       path: '/api/mobile-console'
     });
 
